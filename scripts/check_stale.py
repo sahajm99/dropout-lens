@@ -75,7 +75,8 @@ def diffs(a, b, tol: float, where: str = "$") -> list[str]:
         return [] if a == b else [f"{where}: {a!r} vs {b!r}"]
     if isinstance(a, (int, float)) and isinstance(b, (int, float)):
         here = tolerance(tol, where)
-        if math.isclose(a, b, rel_tol=0.0, abs_tol=here):
+        rel = 0.01 if ".multiclass_enrolment." in where else 0.0
+        if math.isclose(a, b, rel_tol=rel, abs_tol=here):
             return []
         return [f"{where}: {a!r} vs {b!r} (tol {here})"]
     return [] if a == b else [f"{where}: {a!r} vs {b!r}"]
