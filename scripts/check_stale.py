@@ -20,9 +20,26 @@ MODEL_FILES = {
     "permutation_importance.json",
     "fairness.json",
     "calibration.json",
+    "odds_ratios.json",
 }
 LOOSE_TOL = 5e-3
 TIGHT_TOL = 1e-6
+# The three-class logit has one quasi-separated level (docs/DECISIONS.md R9), so
+# its optimiser stops at a platform-dependent point: Newton on one BLAS, BFGS on
+# another. The non-separated coefficients agree to about 1e-3 and the wide
+# interval bounds to about 2e-2 across those paths, so that block gets its own
+# tolerance. A confusion-matrix cell is a count of test rows and may move by
+# one when a probability sits on the threshold.
+MULTICLASS_LOGIT_TOL = 5e-2
+CONFUSION_TOL = 2.0
+
+
+def tolerance(file_tol: float, where: str) -> float:
+    if ".multiclass_enrolment." in where:
+        return MULTICLASS_LOGIT_TOL
+    if ".confusion[" in where:
+        return CONFUSION_TOL
+    return file_tol
 
 
 def committed(path: Path) -> dict | None:
@@ -57,9 +74,10 @@ def diffs(a, b, tol: float, where: str = "$") -> list[str]:
     if isinstance(a, bool) or isinstance(b, bool):
         return [] if a == b else [f"{where}: {a!r} vs {b!r}"]
     if isinstance(a, (int, float)) and isinstance(b, (int, float)):
-        if math.isclose(a, b, rel_tol=0.0, abs_tol=tol):
+        here = tolerance(tol, where)
+        if math.isclose(a, b, rel_tol=0.0, abs_tol=here):
             return []
-        return [f"{where}: {a!r} vs {b!r} (tol {tol})"]
+        return [f"{where}: {a!r} vs {b!r} (tol {here})"]
     return [] if a == b else [f"{where}: {a!r} vs {b!r}"]
 
 
