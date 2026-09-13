@@ -1,0 +1,450 @@
+{
+ "schema": "fairness.v1",
+ "id": "fairness",
+ "generated_at": "2026-09-13T05:47:49.793404+00:00",
+ "target": "binary",
+ "threshold": 0.5,
+ "ci": {
+  "method": "wilson",
+  "level": 0.95
+ },
+ "suppress_below": 30,
+ "results": [
+  {
+   "feature_set": "enrolment",
+   "model": "hgb",
+   "leaks": false,
+   "n_test": 885,
+   "groups": [
+    {
+     "id": "gender",
+     "label": "Gender",
+     "levels": [
+      {
+       "level": "Female",
+       "n": 557,
+       "n_positive": 145,
+       "n_negative": 412,
+       "fnr": {
+        "p": 0.565517,
+        "lo": 0.484175,
+        "hi": 0.643478
+       },
+       "fpr": {
+        "p": 0.06068,
+        "lo": 0.041436,
+        "hi": 0.08804
+       },
+       "suppressed_fnr": false,
+       "suppressed_fpr": false
+      },
+      {
+       "level": "Male",
+       "n": 328,
+       "n_positive": 139,
+       "n_negative": 189,
+       "fnr": {
+        "p": 0.431655,
+        "lo": 0.352246,
+        "hi": 0.51474
+       },
+       "fpr": {
+        "p": 0.253968,
+        "lo": 0.197239,
+        "hi": 0.3205
+       },
+       "suppressed_fnr": false,
+       "suppressed_fpr": false
+      }
+     ]
+    },
+    {
+     "id": "scholarship",
+     "label": "Scholarship",
+     "levels": [
+      {
+       "level": "No scholarship",
+       "n": 668,
+       "n_positive": 253,
+       "n_negative": 415,
+       "fnr": {
+        "p": 0.466403,
+        "lo": 0.405893,
+        "hi": 0.527918
+       },
+       "fpr": {
+        "p": 0.168675,
+        "lo": 0.135723,
+        "hi": 0.207704
+       },
+       "suppressed_fnr": false,
+       "suppressed_fpr": false
+      },
+      {
+       "level": "Scholarship holder",
+       "n": 217,
+       "n_positive": 31,
+       "n_negative": 186,
+       "fnr": {
+        "p": 0.774194,
+        "lo": 0.601876,
+        "hi": 0.886049
+       },
+       "fpr": {
+        "p": 0.016129,
+        "lo": 0.0055,
+        "hi": 0.04634
+       },
+       "suppressed_fnr": false,
+       "suppressed_fpr": false
+      }
+     ]
+    },
+    {
+     "id": "age_band",
+     "label": "Age at enrolment",
+     "levels": [
+      {
+       "level": "17 to 19",
+       "n": 372,
+       "n_positive": 79,
+       "n_negative": 293,
+       "fnr": {
+        "p": 0.721519,
+        "lo": 0.614176,
+        "hi": 0.808318
+       },
+       "fpr": {
+        "p": 0.044369,
+        "lo": 0.02611,
+        "hi": 0.07442
+       },
+       "suppressed_fnr": false,
+       "suppressed_fpr": false
+      },
+      {
+       "level": "20 to 22",
+       "n": 241,
+       "n_positive": 60,
+       "n_negative": 181,
+       "fnr": {
+        "p": 0.616667,
+        "lo": 0.490176,
+        "hi": 0.729117
+       },
+       "fpr": {
+        "p": 0.104972,
+        "lo": 0.068238,
+        "hi": 0.158126
+       },
+       "suppressed_fnr": false,
+       "suppressed_fpr": false
+      },
+      {
+       "level": "23 to 29",
+       "n": 127,
+       "n_positive": 63,
+       "n_negative": 64,
+       "fnr": {
+        "p": 0.333333,
+        "lo": 0.229496,
+        "hi": 0.456328
+       },
+       "fpr": {
+        "p": 0.328125,
+        "lo": 0.225706,
+        "hi": 0.450009
+       },
+       "suppressed_fnr": false,
+       "suppressed_fpr": false
+      },
+      {
+       "level": "30 to 39",
+       "n": 96,
+       "n_positive": 53,
+       "n_negative": 43,
+       "fnr": {
+        "p": 0.264151,
+        "lo": 0.164374,
+        "hi": 0.395807
+       },
+       "fpr": {
+        "p": 0.44186,
+        "lo": 0.304333,
+        "hi": 0.588924
+       },
+       "suppressed_fnr": false,
+       "suppressed_fpr": false
+      },
+      {
+       "level": "40 and over",
+       "n": 49,
+       "n_positive": 29,
+       "n_negative": 20,
+       "fnr": null,
+       "fpr": null,
+       "suppressed_fnr": true,
+       "suppressed_fpr": true
+      }
+     ]
+    },
+    {
+     "id": "tuition",
+     "label": "Tuition fees",
+     "levels": [
+      {
+       "level": "Fees up to date",
+       "n": 774,
+       "n_positive": 187,
+       "n_negative": 587,
+       "fnr": {
+        "p": 0.73262,
+        "lo": 0.66497,
+        "hi": 0.790906
+       },
+       "fpr": {
+        "p": 0.110733,
+        "lo": 0.087834,
+        "hi": 0.138692
+       },
+       "suppressed_fnr": false,
+       "suppressed_fpr": false
+      },
+      {
+       "level": "Fees not up to date",
+       "n": 111,
+       "n_positive": 97,
+       "n_negative": 14,
+       "fnr": {
+        "p": 0.051546,
+        "lo": 0.022216,
+        "hi": 0.115044
+       },
+       "fpr": null,
+       "suppressed_fnr": false,
+       "suppressed_fpr": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "feature_set": "after_s1",
+   "model": "hgb",
+   "leaks": true,
+   "n_test": 885,
+   "groups": [
+    {
+     "id": "gender",
+     "label": "Gender",
+     "levels": [
+      {
+       "level": "Female",
+       "n": 557,
+       "n_positive": 145,
+       "n_negative": 412,
+       "fnr": {
+        "p": 0.344828,
+        "lo": 0.272368,
+        "hi": 0.425297
+       },
+       "fpr": {
+        "p": 0.050971,
+        "lo": 0.033577,
+        "hi": 0.076661
+       },
+       "suppressed_fnr": false,
+       "suppressed_fpr": false
+      },
+      {
+       "level": "Male",
+       "n": 328,
+       "n_positive": 139,
+       "n_negative": 189,
+       "fnr": {
+        "p": 0.258993,
+        "lo": 0.193341,
+        "hi": 0.337608
+       },
+       "fpr": {
+        "p": 0.10582,
+        "lo": 0.069552,
+        "hi": 0.157792
+       },
+       "suppressed_fnr": false,
+       "suppressed_fpr": false
+      }
+     ]
+    },
+    {
+     "id": "scholarship",
+     "label": "Scholarship",
+     "levels": [
+      {
+       "level": "No scholarship",
+       "n": 668,
+       "n_positive": 253,
+       "n_negative": 415,
+       "fnr": {
+        "p": 0.252964,
+        "lo": 0.203367,
+        "hi": 0.309951
+       },
+       "fpr": {
+        "p": 0.093976,
+        "lo": 0.069508,
+        "hi": 0.125892
+       },
+       "suppressed_fnr": false,
+       "suppressed_fpr": false
+      },
+      {
+       "level": "Scholarship holder",
+       "n": 217,
+       "n_positive": 31,
+       "n_negative": 186,
+       "fnr": {
+        "p": 0.709677,
+        "lo": 0.534077,
+        "hi": 0.839042
+       },
+       "fpr": {
+        "p": 0.010753,
+        "lo": 0.002954,
+        "hi": 0.038352
+       },
+       "suppressed_fnr": false,
+       "suppressed_fpr": false
+      }
+     ]
+    },
+    {
+     "id": "age_band",
+     "label": "Age at enrolment",
+     "levels": [
+      {
+       "level": "17 to 19",
+       "n": 372,
+       "n_positive": 79,
+       "n_negative": 293,
+       "fnr": {
+        "p": 0.518987,
+        "lo": 0.410511,
+        "hi": 0.625703
+       },
+       "fpr": {
+        "p": 0.023891,
+        "lo": 0.01162,
+        "hi": 0.048484
+       },
+       "suppressed_fnr": false,
+       "suppressed_fpr": false
+      },
+      {
+       "level": "20 to 22",
+       "n": 241,
+       "n_positive": 60,
+       "n_negative": 181,
+       "fnr": {
+        "p": 0.4,
+        "lo": 0.285695,
+        "hi": 0.526339
+       },
+       "fpr": {
+        "p": 0.077348,
+        "lo": 0.046631,
+        "hi": 0.125632
+       },
+       "suppressed_fnr": false,
+       "suppressed_fpr": false
+      },
+      {
+       "level": "23 to 29",
+       "n": 127,
+       "n_positive": 63,
+       "n_negative": 64,
+       "fnr": {
+        "p": 0.190476,
+        "lo": 0.112462,
+        "hi": 0.304068
+       },
+       "fpr": {
+        "p": 0.109375,
+        "lo": 0.054001,
+        "hi": 0.208986
+       },
+       "suppressed_fnr": false,
+       "suppressed_fpr": false
+      },
+      {
+       "level": "30 to 39",
+       "n": 96,
+       "n_positive": 53,
+       "n_negative": 43,
+       "fnr": {
+        "p": 0.056604,
+        "lo": 0.019437,
+        "hi": 0.153702
+       },
+       "fpr": {
+        "p": 0.209302,
+        "lo": 0.114228,
+        "hi": 0.352056
+       },
+       "suppressed_fnr": false,
+       "suppressed_fpr": false
+      },
+      {
+       "level": "40 and over",
+       "n": 49,
+       "n_positive": 29,
+       "n_negative": 20,
+       "fnr": null,
+       "fpr": null,
+       "suppressed_fnr": true,
+       "suppressed_fpr": true
+      }
+     ]
+    },
+    {
+     "id": "tuition",
+     "label": "Tuition fees",
+     "levels": [
+      {
+       "level": "Fees up to date",
+       "n": 774,
+       "n_positive": 187,
+       "n_negative": 587,
+       "fnr": {
+        "p": 0.44385,
+        "lo": 0.374482,
+        "hi": 0.515479
+       },
+       "fpr": {
+        "p": 0.061329,
+        "lo": 0.044625,
+        "hi": 0.083736
+       },
+       "suppressed_fnr": false,
+       "suppressed_fpr": false
+      },
+      {
+       "level": "Fees not up to date",
+       "n": 111,
+       "n_positive": 97,
+       "n_negative": 14,
+       "fnr": {
+        "p": 0.030928,
+        "lo": 0.010573,
+        "hi": 0.08702
+       },
+       "fpr": null,
+       "suppressed_fnr": false,
+       "suppressed_fpr": true
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,1008 @@
+{
+ "schema": "model_metrics.v1",
+ "id": "model_metrics",
+ "generated_at": "2026-09-13T05:47:41.143173+00:00",
+ "seed": 20260912,
+ "split": {
+  "n_train": 3539,
+  "n_test": 885,
+  "test_share": 0.2,
+  "stratified_on": "outcome"
+ },
+ "cv": {
+  "folds": 5,
+  "selection_metric": "macro_f1"
+ },
+ "bootstrap": {
+  "resamples": 1000,
+  "level": 0.95
+ },
+ "feature_sets": {
+  "enrolment": {
+   "label": "At enrolment",
+   "leaks": false,
+   "variables": [
+    "Age at enrolment",
+    "Gender",
+    "Scholarship",
+    "Tuition fees",
+    "Debtor status",
+    "Displaced",
+    "Nationality",
+    "Educational special needs",
+    "Application route",
+    "Course",
+    "Marital status",
+    "Previous qualification",
+    "Attendance",
+    "Age at enrolment (years)",
+    "Application order",
+    "Unemployment rate at enrolment (cohort marker)",
+    "Inflation rate at enrolment (cohort marker)",
+    "GDP at enrolment (cohort marker)"
+   ]
+  },
+  "after_s1": {
+   "label": "After first semester",
+   "leaks": true,
+   "variables": [
+    "Age at enrolment",
+    "Gender",
+    "Scholarship",
+    "Tuition fees",
+    "Debtor status",
+    "Displaced",
+    "Nationality",
+    "Educational special needs",
+    "Application route",
+    "Course",
+    "Marital status",
+    "Previous qualification",
+    "First-semester approval rate",
+    "Attendance",
+    "Age at enrolment (years)",
+    "Application order",
+    "Unemployment rate at enrolment (cohort marker)",
+    "Inflation rate at enrolment (cohort marker)",
+    "GDP at enrolment (cohort marker)",
+    "First-semester units credited",
+    "First-semester units enrolled",
+    "First-semester evaluations",
+    "First-semester units approved",
+    "First-semester grade",
+    "First-semester units without evaluation"
+   ]
+  }
+ },
+ "targets": {
+  "binary": {
+   "label": "Dropout or not",
+   "classes": [
+    "Not dropout",
+    "Dropout"
+   ],
+   "positive": "Dropout",
+   "test_positive_share": 0.320904
+  },
+  "multiclass": {
+   "label": "Dropout, Enrolled or Graduate",
+   "classes": [
+    "Dropout",
+    "Enrolled",
+    "Graduate"
+   ]
+  }
+ },
+ "models": [
+  "majority",
+  "logistic",
+  "hgb",
+  "rf"
+ ],
+ "model_labels": {
+  "majority": "Majority baseline",
+  "logistic": "Logistic regression",
+  "hgb": "Gradient boosting",
+  "rf": "Random forest"
+ },
+ "results": [
+  {
+   "target": "binary",
+   "feature_set": "enrolment",
+   "model": "majority",
+   "leaks": false,
+   "chosen_params": null,
+   "cv": {
+    "macro_f1_mean": 0.404309,
+    "macro_f1_sd": 0.000227
+   },
+   "test": {
+    "accuracy": {
+     "value": 0.679096,
+     "lo": 0.649689,
+     "hi": 0.711864
+    },
+    "balanced_accuracy": {
+     "value": 0.5,
+     "lo": 0.5,
+     "hi": 0.5
+    },
+    "macro_f1": {
+     "value": 0.404441,
+     "lo": 0.393825,
+     "hi": 0.415842
+    },
+    "roc_auc": null,
+    "pr_auc": null
+   },
+   "confusion": [
+    [
+     601,
+     0
+    ],
+    [
+     284,
+     0
+    ]
+   ],
+   "classes": [
+    "Not dropout",
+    "Dropout"
+   ]
+  },
+  {
+   "target": "binary",
+   "feature_set": "enrolment",
+   "model": "logistic",
+   "leaks": false,
+   "chosen_params": null,
+   "cv": {
+    "macro_f1_mean": 0.714582,
+    "macro_f1_sd": 0.026337
+   },
+   "test": {
+    "accuracy": {
+     "value": 0.778531,
+     "lo": 0.751384,
+     "hi": 0.80791
+    },
+    "balanced_accuracy": {
+     "value": 0.70136,
+     "lo": 0.670376,
+     "hi": 0.734303
+    },
+    "macro_f1": {
+     "value": 0.716872,
+     "lo": 0.6832,
+     "hi": 0.751034
+    },
+    "roc_auc": {
+     "value": 0.792605,
+     "lo": 0.758654,
+     "hi": 0.828696
+    },
+    "pr_auc": {
+     "value": 0.714141,
+     "lo": 0.665612,
+     "hi": 0.762576
+    }
+   },
+   "confusion": [
+    [
+     551,
+     50
+    ],
+    [
+     146,
+     138
+    ]
+   ],
+   "classes": [
+    "Not dropout",
+    "Dropout"
+   ]
+  },
+  {
+   "target": "binary",
+   "feature_set": "enrolment",
+   "model": "hgb",
+   "leaks": false,
+   "chosen_params": {
+    "learning_rate": 0.1,
+    "max_iter": 200
+   },
+   "cv": {
+    "macro_f1_mean": 0.732479,
+    "macro_f1_sd": 0.01926
+   },
+   "test": {
+    "accuracy": {
+     "value": 0.757062,
+     "lo": 0.728814,
+     "hi": 0.784181
+    },
+    "balanced_accuracy": {
+     "value": 0.689268,
+     "lo": 0.657877,
+     "hi": 0.7206
+    },
+    "macro_f1": {
+     "value": 0.69999,
+     "lo": 0.666943,
+     "hi": 0.732198
+    },
+    "roc_auc": {
+     "value": 0.78452,
+     "lo": 0.75123,
+     "hi": 0.820505
+    },
+    "pr_auc": {
+     "value": 0.690775,
+     "lo": 0.636498,
+     "hi": 0.741606
+    }
+   },
+   "confusion": [
+    [
+     528,
+     73
+    ],
+    [
+     142,
+     142
+    ]
+   ],
+   "classes": [
+    "Not dropout",
+    "Dropout"
+   ]
+  },
+  {
+   "target": "binary",
+   "feature_set": "enrolment",
+   "model": "rf",
+   "leaks": false,
+   "chosen_params": {
+    "max_depth": null,
+    "min_samples_leaf": 1
+   },
+   "cv": {
+    "macro_f1_mean": 0.711835,
+    "macro_f1_sd": 0.016211
+   },
+   "test": {
+    "accuracy": {
+     "value": 0.760452,
+     "lo": 0.732203,
+     "hi": 0.788701
+    },
+    "balanced_accuracy": {
+     "value": 0.705693,
+     "lo": 0.675008,
+     "hi": 0.737664
+    },
+    "macro_f1": {
+     "value": 0.71327,
+     "lo": 0.681869,
+     "hi": 0.746653
+    },
+    "roc_auc": {
+     "value": 0.777686,
+     "lo": 0.743461,
+     "hi": 0.812587
+    },
+    "pr_auc": {
+     "value": 0.679246,
+     "lo": 0.625053,
+     "hi": 0.728918
+    }
+   },
+   "confusion": [
+    [
+     516,
+     85
+    ],
+    [
+     127,
+     157
+    ]
+   ],
+   "classes": [
+    "Not dropout",
+    "Dropout"
+   ]
+  },
+  {
+   "target": "binary",
+   "feature_set": "after_s1",
+   "model": "majority",
+   "leaks": true,
+   "chosen_params": null,
+   "cv": {
+    "macro_f1_mean": 0.404309,
+    "macro_f1_sd": 0.000227
+   },
+   "test": {
+    "accuracy": {
+     "value": 0.679096,
+     "lo": 0.649689,
+     "hi": 0.711864
+    },
+    "balanced_accuracy": {
+     "value": 0.5,
+     "lo": 0.5,
+     "hi": 0.5
+    },
+    "macro_f1": {
+     "value": 0.404441,
+     "lo": 0.393825,
+     "hi": 0.415842
+    },
+    "roc_auc": null,
+    "pr_auc": null
+   },
+   "confusion": [
+    [
+     601,
+     0
+    ],
+    [
+     284,
+     0
+    ]
+   ],
+   "classes": [
+    "Not dropout",
+    "Dropout"
+   ]
+  },
+  {
+   "target": "binary",
+   "feature_set": "after_s1",
+   "model": "logistic",
+   "leaks": true,
+   "chosen_params": null,
+   "cv": {
+    "macro_f1_mean": 0.812508,
+    "macro_f1_sd": 0.015582
+   },
+   "test": {
+    "accuracy": {
+     "value": 0.861017,
+     "lo": 0.83726,
+     "hi": 0.883616
+    },
+    "balanced_accuracy": {
+     "value": 0.81781,
+     "lo": 0.789725,
+     "hi": 0.846157
+    },
+    "macro_f1": {
+     "value": 0.832342,
+     "lo": 0.805073,
+     "hi": 0.860252
+    },
+    "roc_auc": {
+     "value": 0.882347,
+     "lo": 0.856151,
+     "hi": 0.909773
+    },
+    "pr_auc": {
+     "value": 0.839919,
+     "lo": 0.804683,
+     "hi": 0.876677
+    }
+   },
+   "confusion": [
+    [
+     564,
+     37
+    ],
+    [
+     86,
+     198
+    ]
+   ],
+   "classes": [
+    "Not dropout",
+    "Dropout"
+   ]
+  },
+  {
+   "target": "binary",
+   "feature_set": "after_s1",
+   "model": "hgb",
+   "leaks": true,
+   "chosen_params": {
+    "learning_rate": 0.05,
+    "max_iter": 100
+   },
+   "cv": {
+    "macro_f1_mean": 0.824192,
+    "macro_f1_sd": 0.013354
+   },
+   "test": {
+    "accuracy": {
+     "value": 0.856497,
+     "lo": 0.833898,
+     "hi": 0.881356
+    },
+    "balanced_accuracy": {
+     "value": 0.814482,
+     "lo": 0.785605,
+     "hi": 0.845854
+    },
+    "macro_f1": {
+     "value": 0.827663,
+     "lo": 0.799914,
+     "hi": 0.856397
+    },
+    "roc_auc": {
+     "value": 0.892664,
+     "lo": 0.866917,
+     "hi": 0.918771
+    },
+    "pr_auc": {
+     "value": 0.858617,
+     "lo": 0.826049,
+     "hi": 0.890738
+    }
+   },
+   "confusion": [
+    [
+     560,
+     41
+    ],
+    [
+     86,
+     198
+    ]
+   ],
+   "classes": [
+    "Not dropout",
+    "Dropout"
+   ]
+  },
+  {
+   "target": "binary",
+   "feature_set": "after_s1",
+   "model": "rf",
+   "leaks": true,
+   "chosen_params": {
+    "max_depth": null,
+    "min_samples_leaf": 1
+   },
+   "cv": {
+    "macro_f1_mean": 0.822246,
+    "macro_f1_sd": 0.009713
+   },
+   "test": {
+    "accuracy": {
+     "value": 0.847458,
+     "lo": 0.822599,
+     "hi": 0.872316
+    },
+    "balanced_accuracy": {
+     "value": 0.809683,
+     "lo": 0.779089,
+     "hi": 0.839053
+    },
+    "macro_f1": {
+     "value": 0.819176,
+     "lo": 0.789005,
+     "hi": 0.846936
+    },
+    "roc_auc": {
+     "value": 0.892459,
+     "lo": 0.865949,
+     "hi": 0.916859
+    },
+    "pr_auc": {
+     "value": 0.848564,
+     "lo": 0.811916,
+     "hi": 0.881165
+    }
+   },
+   "confusion": [
+    [
+     550,
+     51
+    ],
+    [
+     84,
+     200
+    ]
+   ],
+   "classes": [
+    "Not dropout",
+    "Dropout"
+   ]
+  },
+  {
+   "target": "multiclass",
+   "feature_set": "enrolment",
+   "model": "majority",
+   "leaks": false,
+   "chosen_params": null,
+   "cv": {
+    "macro_f1_mean": 0.222013,
+    "macro_f1_sd": 0.000187
+   },
+   "test": {
+    "accuracy": {
+     "value": 0.499435,
+     "lo": 0.468927,
+     "hi": 0.534463
+    },
+    "balanced_accuracy": {
+     "value": 0.333333,
+     "lo": 0.333333,
+     "hi": 0.333333
+    },
+    "macro_f1": {
+     "value": 0.222055,
+     "lo": 0.212821,
+     "hi": 0.232204
+    },
+    "roc_auc": null,
+    "pr_auc": null
+   },
+   "confusion": [
+    [
+     0,
+     0,
+     284
+    ],
+    [
+     0,
+     0,
+     159
+    ],
+    [
+     0,
+     0,
+     442
+    ]
+   ],
+   "classes": [
+    "Dropout",
+    "Enrolled",
+    "Graduate"
+   ]
+  },
+  {
+   "target": "multiclass",
+   "feature_set": "enrolment",
+   "model": "logistic",
+   "leaks": false,
+   "chosen_params": null,
+   "cv": {
+    "macro_f1_mean": 0.509125,
+    "macro_f1_sd": 0.019598
+   },
+   "test": {
+    "accuracy": {
+     "value": 0.636158,
+     "lo": 0.60339,
+     "hi": 0.671186
+    },
+    "balanced_accuracy": {
+     "value": 0.521247,
+     "lo": 0.493574,
+     "hi": 0.550587
+    },
+    "macro_f1": {
+     "value": 0.509766,
+     "lo": 0.473944,
+     "hi": 0.547098
+    },
+    "roc_auc": {
+     "value": 0.762595,
+     "lo": 0.736553,
+     "hi": 0.791217
+    },
+    "pr_auc": {
+     "value": 0.609561,
+     "lo": 0.578935,
+     "hi": 0.647798
+    }
+   },
+   "confusion": [
+    [
+     176,
+     10,
+     98
+    ],
+    [
+     44,
+     17,
+     98
+    ],
+    [
+     63,
+     9,
+     370
+    ]
+   ],
+   "classes": [
+    "Dropout",
+    "Enrolled",
+    "Graduate"
+   ]
+  },
+  {
+   "target": "multiclass",
+   "feature_set": "enrolment",
+   "model": "hgb",
+   "leaks": false,
+   "chosen_params": {
+    "learning_rate": 0.1,
+    "max_iter": 100
+   },
+   "cv": {
+    "macro_f1_mean": 0.539217,
+    "macro_f1_sd": 0.011518
+   },
+   "test": {
+    "accuracy": {
+     "value": 0.647458,
+     "lo": 0.613559,
+     "hi": 0.681384
+    },
+    "balanced_accuracy": {
+     "value": 0.546825,
+     "lo": 0.5145,
+     "hi": 0.579166
+    },
+    "macro_f1": {
+     "value": 0.549756,
+     "lo": 0.510492,
+     "hi": 0.587621
+    },
+    "roc_auc": {
+     "value": 0.764786,
+     "lo": 0.734991,
+     "hi": 0.794484
+    },
+    "pr_auc": {
+     "value": 0.613267,
+     "lo": 0.579636,
+     "hi": 0.652297
+    }
+   },
+   "confusion": [
+    [
+     171,
+     15,
+     98
+    ],
+    [
+     48,
+     32,
+     79
+    ],
+    [
+     60,
+     12,
+     370
+    ]
+   ],
+   "classes": [
+    "Dropout",
+    "Enrolled",
+    "Graduate"
+   ]
+  },
+  {
+   "target": "multiclass",
+   "feature_set": "enrolment",
+   "model": "rf",
+   "leaks": false,
+   "chosen_params": {
+    "max_depth": null,
+    "min_samples_leaf": 1
+   },
+   "cv": {
+    "macro_f1_mean": 0.530807,
+    "macro_f1_sd": 0.035684
+   },
+   "test": {
+    "accuracy": {
+     "value": 0.620339,
+     "lo": 0.586441,
+     "hi": 0.653136
+    },
+    "balanced_accuracy": {
+     "value": 0.540052,
+     "lo": 0.508326,
+     "hi": 0.5718
+    },
+    "macro_f1": {
+     "value": 0.539959,
+     "lo": 0.503586,
+     "hi": 0.573553
+    },
+    "roc_auc": {
+     "value": 0.738813,
+     "lo": 0.711552,
+     "hi": 0.767202
+    },
+    "pr_auc": {
+     "value": 0.569952,
+     "lo": 0.540132,
+     "hi": 0.60469
+    }
+   },
+   "confusion": [
+    [
+     182,
+     25,
+     77
+    ],
+    [
+     48,
+     37,
+     74
+    ],
+    [
+     75,
+     37,
+     330
+    ]
+   ],
+   "classes": [
+    "Dropout",
+    "Enrolled",
+    "Graduate"
+   ]
+  },
+  {
+   "target": "multiclass",
+   "feature_set": "after_s1",
+   "model": "majority",
+   "leaks": true,
+   "chosen_params": null,
+   "cv": {
+    "macro_f1_mean": 0.222013,
+    "macro_f1_sd": 0.000187
+   },
+   "test": {
+    "accuracy": {
+     "value": 0.499435,
+     "lo": 0.468927,
+     "hi": 0.534463
+    },
+    "balanced_accuracy": {
+     "value": 0.333333,
+     "lo": 0.333333,
+     "hi": 0.333333
+    },
+    "macro_f1": {
+     "value": 0.222055,
+     "lo": 0.212821,
+     "hi": 0.232204
+    },
+    "roc_auc": null,
+    "pr_auc": null
+   },
+   "confusion": [
+    [
+     0,
+     0,
+     284
+    ],
+    [
+     0,
+     0,
+     159
+    ],
+    [
+     0,
+     0,
+     442
+    ]
+   ],
+   "classes": [
+    "Dropout",
+    "Enrolled",
+    "Graduate"
+   ]
+  },
+  {
+   "target": "multiclass",
+   "feature_set": "after_s1",
+   "model": "logistic",
+   "leaks": true,
+   "chosen_params": null,
+   "cv": {
+    "macro_f1_mean": 0.622495,
+    "macro_f1_sd": 0.01567
+   },
+   "test": {
+    "accuracy": {
+     "value": 0.723164,
+     "lo": 0.692655,
+     "hi": 0.753672
+    },
+    "balanced_accuracy": {
+     "value": 0.61984,
+     "lo": 0.590079,
+     "hi": 0.648764
+    },
+    "macro_f1": {
+     "value": 0.619904,
+     "lo": 0.583947,
+     "hi": 0.653688
+    },
+    "roc_auc": {
+     "value": 0.838125,
+     "lo": 0.814538,
+     "hi": 0.861583
+    },
+    "pr_auc": {
+     "value": 0.699027,
+     "lo": 0.670485,
+     "hi": 0.73244
+    }
+   },
+   "confusion": [
+    [
+     215,
+     18,
+     51
+    ],
+    [
+     44,
+     35,
+     80
+    ],
+    [
+     27,
+     25,
+     390
+    ]
+   ],
+   "classes": [
+    "Dropout",
+    "Enrolled",
+    "Graduate"
+   ]
+  },
+  {
+   "target": "multiclass",
+   "feature_set": "after_s1",
+   "model": "hgb",
+   "leaks": true,
+   "chosen_params": {
+    "learning_rate": 0.1,
+    "max_iter": 200
+   },
+   "cv": {
+    "macro_f1_mean": 0.657974,
+    "macro_f1_sd": 0.020627
+   },
+   "test": {
+    "accuracy": {
+     "value": 0.749153,
+     "lo": 0.720904,
+     "hi": 0.778531
+    },
+    "balanced_accuracy": {
+     "value": 0.675525,
+     "lo": 0.643939,
+     "hi": 0.706936
+    },
+    "macro_f1": {
+     "value": 0.681094,
+     "lo": 0.648583,
+     "hi": 0.712926
+    },
+    "roc_auc": {
+     "value": 0.865214,
+     "lo": 0.843484,
+     "hi": 0.884197
+    },
+    "pr_auc": {
+     "value": 0.728836,
+     "lo": 0.697211,
+     "hi": 0.761528
+    }
+   },
+   "confusion": [
+    [
+     220,
+     24,
+     40
+    ],
+    [
+     40,
+     62,
+     57
+    ],
+    [
+     27,
+     34,
+     381
+    ]
+   ],
+   "classes": [
+    "Dropout",
+    "Enrolled",
+    "Graduate"
+   ]
+  },
+  {
+   "target": "multiclass",
+   "feature_set": "after_s1",
+   "model": "rf",
+   "leaks": true,
+   "chosen_params": {
+    "max_depth": null,
+    "min_samples_leaf": 1
+   },
+   "cv": {
+    "macro_f1_mean": 0.651801,
+    "macro_f1_sd": 0.019482
+   },
+   "test": {
+    "accuracy": {
+     "value": 0.736723,
+     "lo": 0.705085,
+     "hi": 0.763842
+    },
+    "balanced_accuracy": {
+     "value": 0.654226,
+     "lo": 0.622622,
+     "hi": 0.684403
+    },
+    "macro_f1": {
+     "value": 0.657191,
+     "lo": 0.622937,
+     "hi": 0.689889
+    },
+    "roc_auc": {
+     "value": 0.863166,
+     "lo": 0.841046,
+     "hi": 0.883061
+    },
+    "pr_auc": {
+     "value": 0.721068,
+     "lo": 0.69049,
+     "hi": 0.754702
+    }
+   },
+   "confusion": [
+    [
+     221,
+     24,
+     39
+    ],
+    [
+     47,
+     52,
+     60
+    ],
+    [
+     31,
+     32,
+     379
+    ]
+   ],
+   "classes": [
+    "Dropout",
+    "Enrolled",
+    "Graduate"
+   ]
+  }
+ ],
+ "best": {
+  "binary": {
+   "enrolment": "hgb",
+   "after_s1": "hgb"
+  },
+  "multiclass": {
+   "enrolment": "hgb",
+   "after_s1": "hgb"
+  }
+ }
+}

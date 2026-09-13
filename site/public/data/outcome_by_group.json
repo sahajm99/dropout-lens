@@ -1,0 +1,1398 @@
+{
+ "schema": "outcome_by_group.v1",
+ "id": "outcome_by_group",
+ "generated_at": "2026-09-13T05:45:46.803110+00:00",
+ "outcomes": [
+  "Dropout",
+  "Enrolled",
+  "Graduate"
+ ],
+ "ci": {
+  "method": "wilson",
+  "level": 0.95
+ },
+ "suppress_below": 30,
+ "small_n_below": 100,
+ "n_total": 4424,
+ "groups": [
+  {
+   "id": "gender",
+   "label": "Gender",
+   "post_enrolment": false,
+   "levels": [
+    "Female",
+    "Male"
+   ],
+   "rows": [
+    {
+     "level": "Female",
+     "n": 2868,
+     "counts": {
+      "Dropout": 720,
+      "Enrolled": 487,
+      "Graduate": 1661
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.251046,
+       "lo": 0.235517,
+       "hi": 0.267241
+      },
+      "Enrolled": {
+       "p": 0.169805,
+       "lo": 0.156507,
+       "hi": 0.183985
+      },
+      "Graduate": {
+       "p": 0.579149,
+       "lo": 0.560987,
+       "hi": 0.5971
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    },
+    {
+     "level": "Male",
+     "n": 1556,
+     "counts": {
+      "Dropout": 701,
+      "Enrolled": 307,
+      "Graduate": 548
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.450514,
+       "lo": 0.425945,
+       "hi": 0.475327
+      },
+      "Enrolled": {
+       "p": 0.197301,
+       "lo": 0.178283,
+       "hi": 0.217809
+      },
+      "Graduate": {
+       "p": 0.352185,
+       "lo": 0.328842,
+       "hi": 0.376256
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    }
+   ]
+  },
+  {
+   "id": "scholarship",
+   "label": "Scholarship",
+   "post_enrolment": false,
+   "levels": [
+    "No scholarship",
+    "Scholarship holder"
+   ],
+   "rows": [
+    {
+     "level": "No scholarship",
+     "n": 3325,
+     "counts": {
+      "Dropout": 1287,
+      "Enrolled": 664,
+      "Graduate": 1374
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.387068,
+       "lo": 0.370651,
+       "hi": 0.403745
+      },
+      "Enrolled": {
+       "p": 0.199699,
+       "lo": 0.186461,
+       "hi": 0.213631
+      },
+      "Graduate": {
+       "p": 0.413233,
+       "lo": 0.396605,
+       "hi": 0.430061
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    },
+    {
+     "level": "Scholarship holder",
+     "n": 1099,
+     "counts": {
+      "Dropout": 134,
+      "Enrolled": 130,
+      "Graduate": 835
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.121929,
+       "lo": 0.10389,
+       "hi": 0.142602
+      },
+      "Enrolled": {
+       "p": 0.118289,
+       "lo": 0.100512,
+       "hi": 0.138725
+      },
+      "Graduate": {
+       "p": 0.759782,
+       "lo": 0.733647,
+       "hi": 0.784107
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    }
+   ]
+  },
+  {
+   "id": "tuition",
+   "label": "Tuition fees",
+   "post_enrolment": false,
+   "levels": [
+    "Fees up to date",
+    "Fees not up to date"
+   ],
+   "rows": [
+    {
+     "level": "Fees up to date",
+     "n": 3896,
+     "counts": {
+      "Dropout": 964,
+      "Enrolled": 752,
+      "Graduate": 2180
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.247433,
+       "lo": 0.234136,
+       "hi": 0.261228
+      },
+      "Enrolled": {
+       "p": 0.193018,
+       "lo": 0.18093,
+       "hi": 0.205711
+      },
+      "Graduate": {
+       "p": 0.559548,
+       "lo": 0.543909,
+       "hi": 0.575071
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    },
+    {
+     "level": "Fees not up to date",
+     "n": 528,
+     "counts": {
+      "Dropout": 457,
+      "Enrolled": 42,
+      "Graduate": 29
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.86553,
+       "lo": 0.833776,
+       "hi": 0.892004
+      },
+      "Enrolled": {
+       "p": 0.079545,
+       "lo": 0.059386,
+       "hi": 0.105779
+      },
+      "Graduate": {
+       "p": 0.054924,
+       "lo": 0.038511,
+       "hi": 0.077767
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    }
+   ]
+  },
+  {
+   "id": "debtor",
+   "label": "Debtor status",
+   "post_enrolment": false,
+   "levels": [
+    "Not a debtor",
+    "Debtor"
+   ],
+   "rows": [
+    {
+     "level": "Not a debtor",
+     "n": 3921,
+     "counts": {
+      "Dropout": 1109,
+      "Enrolled": 704,
+      "Graduate": 2108
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.282836,
+       "lo": 0.268957,
+       "hi": 0.29714
+      },
+      "Enrolled": {
+       "p": 0.179546,
+       "lo": 0.167848,
+       "hi": 0.191871
+      },
+      "Graduate": {
+       "p": 0.537618,
+       "lo": 0.521983,
+       "hi": 0.553179
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    },
+    {
+     "level": "Debtor",
+     "n": 503,
+     "counts": {
+      "Dropout": 312,
+      "Enrolled": 90,
+      "Graduate": 101
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.620278,
+       "lo": 0.577106,
+       "hi": 0.661628
+      },
+      "Enrolled": {
+       "p": 0.178926,
+       "lo": 0.147903,
+       "hi": 0.214817
+      },
+      "Graduate": {
+       "p": 0.200795,
+       "lo": 0.168114,
+       "hi": 0.238012
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    }
+   ]
+  },
+  {
+   "id": "age_band",
+   "label": "Age at enrolment",
+   "post_enrolment": false,
+   "levels": [
+    "17 to 19",
+    "20 to 22",
+    "23 to 29",
+    "30 to 39",
+    "40 and over"
+   ],
+   "rows": [
+    {
+     "level": "17 to 19",
+     "n": 1952,
+     "counts": {
+      "Dropout": 409,
+      "Enrolled": 331,
+      "Graduate": 1212
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.209529,
+       "lo": 0.192054,
+       "hi": 0.228144
+      },
+      "Enrolled": {
+       "p": 0.16957,
+       "lo": 0.153575,
+       "hi": 0.186862
+      },
+      "Graduate": {
+       "p": 0.620902,
+       "lo": 0.599161,
+       "hi": 0.642167
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    },
+    {
+     "level": "20 to 22",
+     "n": 1095,
+     "counts": {
+      "Dropout": 284,
+      "Enrolled": 247,
+      "Graduate": 564
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.259361,
+       "lo": 0.234274,
+       "hi": 0.28613
+      },
+      "Enrolled": {
+       "p": 0.225571,
+       "lo": 0.201799,
+       "hi": 0.251261
+      },
+      "Graduate": {
+       "p": 0.515068,
+       "lo": 0.485466,
+       "hi": 0.544566
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    },
+    {
+     "level": "23 to 29",
+     "n": 666,
+     "counts": {
+      "Dropout": 343,
+      "Enrolled": 126,
+      "Graduate": 197
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.515015,
+       "lo": 0.477081,
+       "hi": 0.552776
+      },
+      "Enrolled": {
+       "p": 0.189189,
+       "lo": 0.161258,
+       "hi": 0.220685
+      },
+      "Graduate": {
+       "p": 0.295796,
+       "lo": 0.262384,
+       "hi": 0.331549
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    },
+    {
+     "level": "30 to 39",
+     "n": 463,
+     "counts": {
+      "Dropout": 258,
+      "Enrolled": 60,
+      "Graduate": 145
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.557235,
+       "lo": 0.511704,
+       "hi": 0.601825
+      },
+      "Enrolled": {
+       "p": 0.12959,
+       "lo": 0.10202,
+       "hi": 0.163255
+      },
+      "Graduate": {
+       "p": 0.313175,
+       "lo": 0.272613,
+       "hi": 0.356811
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    },
+    {
+     "level": "40 and over",
+     "n": 248,
+     "counts": {
+      "Dropout": 127,
+      "Enrolled": 30,
+      "Graduate": 91
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.512097,
+       "lo": 0.450178,
+       "hi": 0.573647
+      },
+      "Enrolled": {
+       "p": 0.120968,
+       "lo": 0.086063,
+       "hi": 0.167436
+      },
+      "Graduate": {
+       "p": 0.366935,
+       "lo": 0.309405,
+       "hi": 0.428525
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    }
+   ]
+  },
+  {
+   "id": "application_mode",
+   "label": "Application route",
+   "post_enrolment": false,
+   "levels": [
+    "1st phase, general contingent",
+    "2nd or 3rd phase, general contingent",
+    "Over 23 years old",
+    "Transfer or change of course or institution",
+    "Prior higher or technical qualification",
+    "Special contingents and ordinances"
+   ],
+   "rows": [
+    {
+     "level": "1st phase, general contingent",
+     "n": 1708,
+     "counts": {
+      "Dropout": 345,
+      "Enrolled": 300,
+      "Graduate": 1063
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.201991,
+       "lo": 0.183629,
+       "hi": 0.22169
+      },
+      "Enrolled": {
+       "p": 0.175644,
+       "lo": 0.158332,
+       "hi": 0.194412
+      },
+      "Graduate": {
+       "p": 0.622365,
+       "lo": 0.599124,
+       "hi": 0.645058
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    },
+    {
+     "level": "2nd or 3rd phase, general contingent",
+     "n": 996,
+     "counts": {
+      "Dropout": 301,
+      "Enrolled": 175,
+      "Graduate": 520
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.302209,
+       "lo": 0.274494,
+       "hi": 0.331443
+      },
+      "Enrolled": {
+       "p": 0.175703,
+       "lo": 0.153327,
+       "hi": 0.200571
+      },
+      "Graduate": {
+       "p": 0.522088,
+       "lo": 0.491041,
+       "hi": 0.552966
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    },
+    {
+     "level": "Over 23 years old",
+     "n": 785,
+     "counts": {
+      "Dropout": 435,
+      "Enrolled": 121,
+      "Graduate": 229
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.55414,
+       "lo": 0.519189,
+       "hi": 0.588564
+      },
+      "Enrolled": {
+       "p": 0.15414,
+       "lo": 0.13057,
+       "hi": 0.181078
+      },
+      "Graduate": {
+       "p": 0.29172,
+       "lo": 0.260997,
+       "hi": 0.324471
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    },
+    {
+     "level": "Transfer or change of course or institution",
+     "n": 449,
+     "counts": {
+      "Dropout": 169,
+      "Enrolled": 99,
+      "Graduate": 181
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.376392,
+       "lo": 0.332806,
+       "hi": 0.422075
+      },
+      "Enrolled": {
+       "p": 0.22049,
+       "lo": 0.184604,
+       "hi": 0.261119
+      },
+      "Graduate": {
+       "p": 0.403118,
+       "lo": 0.358754,
+       "hi": 0.449126
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    },
+    {
+     "level": "Prior higher or technical qualification",
+     "n": 387,
+     "counts": {
+      "Dropout": 152,
+      "Enrolled": 73,
+      "Graduate": 162
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.392765,
+       "lo": 0.345391,
+       "hi": 0.442247
+      },
+      "Enrolled": {
+       "p": 0.18863,
+       "lo": 0.152785,
+       "hi": 0.230596
+      },
+      "Graduate": {
+       "p": 0.418605,
+       "lo": 0.370489,
+       "hi": 0.46832
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    },
+    {
+     "level": "Special contingents and ordinances",
+     "n": 99,
+     "counts": {
+      "Dropout": 19,
+      "Enrolled": 26,
+      "Graduate": 54
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.191919,
+       "lo": 0.12645,
+       "hi": 0.280404
+      },
+      "Enrolled": {
+       "p": 0.262626,
+       "lo": 0.185981,
+       "hi": 0.357004
+      },
+      "Graduate": {
+       "p": 0.545455,
+       "lo": 0.447507,
+       "hi": 0.640006
+      }
+     },
+     "suppressed": false,
+     "small_n": true
+    }
+   ]
+  },
+  {
+   "id": "course",
+   "label": "Course",
+   "post_enrolment": false,
+   "levels": [
+    "Nursing",
+    "Management",
+    "Social Service",
+    "Veterinary Nursing",
+    "Journalism and Communication",
+    "Advertising and Marketing Management",
+    "Management (evening)",
+    "Tourism",
+    "Communication Design",
+    "Animation and Multimedia Design",
+    "Social Service (evening)",
+    "Agronomy",
+    "Basic Education",
+    "Informatics Engineering",
+    "Equinculture",
+    "Oral Hygiene",
+    "Biofuel Production Technologies"
+   ],
+   "rows": [
+    {
+     "level": "Nursing",
+     "n": 766,
+     "counts": {
+      "Dropout": 118,
+      "Enrolled": 100,
+      "Graduate": 548
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.154047,
+       "lo": 0.130215,
+       "hi": 0.181332
+      },
+      "Enrolled": {
+       "p": 0.130548,
+       "lo": 0.108522,
+       "hi": 0.156262
+      },
+      "Graduate": {
+       "p": 0.715405,
+       "lo": 0.682438,
+       "hi": 0.746222
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    },
+    {
+     "level": "Management",
+     "n": 380,
+     "counts": {
+      "Dropout": 134,
+      "Enrolled": 108,
+      "Graduate": 138
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.352632,
+       "lo": 0.306286,
+       "hi": 0.401927
+      },
+      "Enrolled": {
+       "p": 0.284211,
+       "lo": 0.241197,
+       "hi": 0.331543
+      },
+      "Graduate": {
+       "p": 0.363158,
+       "lo": 0.316398,
+       "hi": 0.412657
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    },
+    {
+     "level": "Social Service",
+     "n": 355,
+     "counts": {
+      "Dropout": 65,
+      "Enrolled": 42,
+      "Graduate": 248
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.183099,
+       "lo": 0.146332,
+       "hi": 0.22665
+      },
+      "Enrolled": {
+       "p": 0.11831,
+       "lo": 0.08873,
+       "hi": 0.156062
+      },
+      "Graduate": {
+       "p": 0.698592,
+       "lo": 0.648941,
+       "hi": 0.74399
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    },
+    {
+     "level": "Veterinary Nursing",
+     "n": 337,
+     "counts": {
+      "Dropout": 90,
+      "Enrolled": 75,
+      "Graduate": 172
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.267062,
+       "lo": 0.222645,
+       "hi": 0.31673
+      },
+      "Enrolled": {
+       "p": 0.222552,
+       "lo": 0.181409,
+       "hi": 0.269949
+      },
+      "Graduate": {
+       "p": 0.510386,
+       "lo": 0.457199,
+       "hi": 0.563339
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    },
+    {
+     "level": "Journalism and Communication",
+     "n": 331,
+     "counts": {
+      "Dropout": 101,
+      "Enrolled": 34,
+      "Graduate": 196
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.305136,
+       "lo": 0.258001,
+       "hi": 0.356742
+      },
+      "Enrolled": {
+       "p": 0.102719,
+       "lo": 0.074441,
+       "hi": 0.140112
+      },
+      "Graduate": {
+       "p": 0.592145,
+       "lo": 0.53844,
+       "hi": 0.643736
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    },
+    {
+     "level": "Advertising and Marketing Management",
+     "n": 268,
+     "counts": {
+      "Dropout": 95,
+      "Enrolled": 48,
+      "Graduate": 125
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.354478,
+       "lo": 0.299632,
+       "hi": 0.413436
+      },
+      "Enrolled": {
+       "p": 0.179104,
+       "lo": 0.137833,
+       "hi": 0.229446
+      },
+      "Graduate": {
+       "p": 0.466418,
+       "lo": 0.407587,
+       "hi": 0.526198
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    },
+    {
+     "level": "Management (evening)",
+     "n": 268,
+     "counts": {
+      "Dropout": 136,
+      "Enrolled": 54,
+      "Graduate": 78
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.507463,
+       "lo": 0.447926,
+       "hi": 0.566788
+      },
+      "Enrolled": {
+       "p": 0.201493,
+       "lo": 0.157842,
+       "hi": 0.25358
+      },
+      "Graduate": {
+       "p": 0.291045,
+       "lo": 0.239919,
+       "hi": 0.348076
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    },
+    {
+     "level": "Tourism",
+     "n": 252,
+     "counts": {
+      "Dropout": 96,
+      "Enrolled": 41,
+      "Graduate": 115
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.380952,
+       "lo": 0.323207,
+       "hi": 0.442273
+      },
+      "Enrolled": {
+       "p": 0.162698,
+       "lo": 0.122254,
+       "hi": 0.213272
+      },
+      "Graduate": {
+       "p": 0.456349,
+       "lo": 0.395967,
+       "hi": 0.518042
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    },
+    {
+     "level": "Communication Design",
+     "n": 226,
+     "counts": {
+      "Dropout": 51,
+      "Enrolled": 42,
+      "Graduate": 133
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.225664,
+       "lo": 0.176013,
+       "hi": 0.284485
+      },
+      "Enrolled": {
+       "p": 0.185841,
+       "lo": 0.140531,
+       "hi": 0.241652
+      },
+      "Graduate": {
+       "p": 0.588496,
+       "lo": 0.523379,
+       "hi": 0.650654
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    },
+    {
+     "level": "Animation and Multimedia Design",
+     "n": 215,
+     "counts": {
+      "Dropout": 82,
+      "Enrolled": 37,
+      "Graduate": 96
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.381395,
+       "lo": 0.319089,
+       "hi": 0.447865
+      },
+      "Enrolled": {
+       "p": 0.172093,
+       "lo": 0.127509,
+       "hi": 0.228189
+      },
+      "Graduate": {
+       "p": 0.446512,
+       "lo": 0.381579,
+       "hi": 0.513322
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    },
+    {
+     "level": "Social Service (evening)",
+     "n": 215,
+     "counts": {
+      "Dropout": 71,
+      "Enrolled": 21,
+      "Graduate": 123
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.330233,
+       "lo": 0.270832,
+       "hi": 0.395593
+      },
+      "Enrolled": {
+       "p": 0.097674,
+       "lo": 0.064775,
+       "hi": 0.144699
+      },
+      "Graduate": {
+       "p": 0.572093,
+       "lo": 0.505263,
+       "hi": 0.636393
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    },
+    {
+     "level": "Agronomy",
+     "n": 210,
+     "counts": {
+      "Dropout": 86,
+      "Enrolled": 37,
+      "Graduate": 87
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.409524,
+       "lo": 0.34522,
+       "hi": 0.477078
+      },
+      "Enrolled": {
+       "p": 0.17619,
+       "lo": 0.130614,
+       "hi": 0.233401
+      },
+      "Graduate": {
+       "p": 0.414286,
+       "lo": 0.349785,
+       "hi": 0.481866
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    },
+    {
+     "level": "Basic Education",
+     "n": 192,
+     "counts": {
+      "Dropout": 85,
+      "Enrolled": 50,
+      "Graduate": 57
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.442708,
+       "lo": 0.374257,
+       "hi": 0.513407
+      },
+      "Enrolled": {
+       "p": 0.260417,
+       "lo": 0.203472,
+       "hi": 0.32676
+      },
+      "Graduate": {
+       "p": 0.296875,
+       "lo": 0.236747,
+       "hi": 0.364971
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    },
+    {
+     "level": "Informatics Engineering",
+     "n": 170,
+     "counts": {
+      "Dropout": 92,
+      "Enrolled": 64,
+      "Graduate": 14
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.541176,
+       "lo": 0.466187,
+       "hi": 0.614346
+      },
+      "Enrolled": {
+       "p": 0.376471,
+       "lo": 0.307127,
+       "hi": 0.451274
+      },
+      "Graduate": {
+       "p": 0.082353,
+       "lo": 0.049688,
+       "hi": 0.133476
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    },
+    {
+     "level": "Equinculture",
+     "n": 141,
+     "counts": {
+      "Dropout": 78,
+      "Enrolled": 21,
+      "Graduate": 42
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.553191,
+       "lo": 0.470803,
+       "hi": 0.632759
+      },
+      "Enrolled": {
+       "p": 0.148936,
+       "lo": 0.099524,
+       "hi": 0.21697
+      },
+      "Graduate": {
+       "p": 0.297872,
+       "lo": 0.228563,
+       "hi": 0.377903
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    },
+    {
+     "level": "Oral Hygiene",
+     "n": 86,
+     "counts": {
+      "Dropout": 33,
+      "Enrolled": 17,
+      "Graduate": 36
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.383721,
+       "lo": 0.288014,
+       "hi": 0.489371
+      },
+      "Enrolled": {
+       "p": 0.197674,
+       "lo": 0.127244,
+       "hi": 0.293959
+      },
+      "Graduate": {
+       "p": 0.418605,
+       "lo": 0.320015,
+       "hi": 0.524155
+      }
+     },
+     "suppressed": false,
+     "small_n": true
+    },
+    {
+     "level": "Biofuel Production Technologies",
+     "n": 12,
+     "counts": {
+      "Dropout": 8,
+      "Enrolled": 3,
+      "Graduate": 1
+     },
+     "shares": null,
+     "suppressed": true,
+     "small_n": true
+    }
+   ]
+  },
+  {
+   "id": "attendance",
+   "label": "Attendance",
+   "post_enrolment": false,
+   "levels": [
+    "Daytime",
+    "Evening"
+   ],
+   "rows": [
+    {
+     "level": "Daytime",
+     "n": 3941,
+     "counts": {
+      "Dropout": 1214,
+      "Enrolled": 719,
+      "Graduate": 2008
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.308044,
+       "lo": 0.293822,
+       "hi": 0.322639
+      },
+      "Enrolled": {
+       "p": 0.182441,
+       "lo": 0.170694,
+       "hi": 0.194806
+      },
+      "Graduate": {
+       "p": 0.509515,
+       "lo": 0.493906,
+       "hi": 0.525106
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    },
+    {
+     "level": "Evening",
+     "n": 483,
+     "counts": {
+      "Dropout": 207,
+      "Enrolled": 75,
+      "Graduate": 201
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.428571,
+       "lo": 0.385173,
+       "hi": 0.473098
+      },
+      "Enrolled": {
+       "p": 0.15528,
+       "lo": 0.125714,
+       "hi": 0.190286
+      },
+      "Graduate": {
+       "p": 0.416149,
+       "lo": 0.37302,
+       "hi": 0.460601
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    }
+   ]
+  },
+  {
+   "id": "displaced",
+   "label": "Displaced",
+   "post_enrolment": false,
+   "levels": [
+    "Not displaced",
+    "Displaced"
+   ],
+   "rows": [
+    {
+     "level": "Not displaced",
+     "n": 1998,
+     "counts": {
+      "Dropout": 752,
+      "Enrolled": 361,
+      "Graduate": 885
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.376376,
+       "lo": 0.355389,
+       "hi": 0.397838
+      },
+      "Enrolled": {
+       "p": 0.180681,
+       "lo": 0.164428,
+       "hi": 0.198159
+      },
+      "Graduate": {
+       "p": 0.442943,
+       "lo": 0.421292,
+       "hi": 0.464813
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    },
+    {
+     "level": "Displaced",
+     "n": 2426,
+     "counts": {
+      "Dropout": 669,
+      "Enrolled": 433,
+      "Graduate": 1324
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.275763,
+       "lo": 0.258344,
+       "hi": 0.29389
+      },
+      "Enrolled": {
+       "p": 0.178483,
+       "lo": 0.163758,
+       "hi": 0.194225
+      },
+      "Graduate": {
+       "p": 0.545754,
+       "lo": 0.525885,
+       "hi": 0.565479
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    }
+   ]
+  },
+  {
+   "id": "approval_band_s1",
+   "label": "First-semester approval rate",
+   "post_enrolment": true,
+   "levels": [
+    "No units enrolled",
+    "0% approved",
+    "1 to 49%",
+    "50 to 99%",
+    "100% approved"
+   ],
+   "rows": [
+    {
+     "level": "No units enrolled",
+     "n": 180,
+     "counts": {
+      "Dropout": 77,
+      "Enrolled": 28,
+      "Graduate": 75
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.427778,
+       "lo": 0.357753,
+       "hi": 0.500821
+      },
+      "Enrolled": {
+       "p": 0.155556,
+       "lo": 0.10987,
+       "hi": 0.215636
+      },
+      "Graduate": {
+       "p": 0.416667,
+       "lo": 0.347121,
+       "hi": 0.489695
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    },
+    {
+     "level": "0% approved",
+     "n": 538,
+     "counts": {
+      "Dropout": 493,
+      "Enrolled": 43,
+      "Graduate": 2
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.916357,
+       "lo": 0.889908,
+       "hi": 0.936902
+      },
+      "Enrolled": {
+       "p": 0.079926,
+       "lo": 0.059877,
+       "hi": 0.10593
+      },
+      "Graduate": {
+       "p": 0.003717,
+       "lo": 0.00102,
+       "hi": 0.013452
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    },
+    {
+     "level": "1 to 49%",
+     "n": 310,
+     "counts": {
+      "Dropout": 226,
+      "Enrolled": 78,
+      "Graduate": 6
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.729032,
+       "lo": 0.676976,
+       "hi": 0.775482
+      },
+      "Enrolled": {
+       "p": 0.251613,
+       "lo": 0.206548,
+       "hi": 0.302758
+      },
+      "Graduate": {
+       "p": 0.019355,
+       "lo": 0.0089,
+       "hi": 0.041576
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    },
+    {
+     "level": "50 to 99%",
+     "n": 1668,
+     "counts": {
+      "Dropout": 474,
+      "Enrolled": 463,
+      "Graduate": 731
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.284173,
+       "lo": 0.263043,
+       "hi": 0.306294
+      },
+      "Enrolled": {
+       "p": 0.277578,
+       "lo": 0.256618,
+       "hi": 0.29956
+      },
+      "Graduate": {
+       "p": 0.438249,
+       "lo": 0.414607,
+       "hi": 0.462176
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    },
+    {
+     "level": "100% approved",
+     "n": 1728,
+     "counts": {
+      "Dropout": 151,
+      "Enrolled": 182,
+      "Graduate": 1395
+     },
+     "shares": {
+      "Dropout": {
+       "p": 0.087384,
+       "lo": 0.074968,
+       "hi": 0.101631
+      },
+      "Enrolled": {
+       "p": 0.105324,
+       "lo": 0.091716,
+       "hi": 0.120683
+      },
+      "Graduate": {
+       "p": 0.807292,
+       "lo": 0.788021,
+       "hi": 0.825199
+      }
+     },
+     "suppressed": false,
+     "small_n": false
+    }
+   ]
+  }
+ ]
+}

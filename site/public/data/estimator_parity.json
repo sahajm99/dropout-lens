@@ -1,0 +1,1508 @@
+{
+ "schema": "estimator_parity.v1",
+ "id": "estimator_parity",
+ "generated_at": "2026-09-13T05:47:49.800580+00:00",
+ "seed": 20260912,
+ "rows": [
+  {
+   "inputs": {
+    "age_band": "40 and over",
+    "gender": "Female",
+    "scholarship": "No scholarship",
+    "displaced": "Displaced",
+    "application_mode": "2nd or 3rd phase, general contingent",
+    "course": "Social Service (evening)",
+    "previous_qualification": "Basic or incomplete secondary",
+    "marital": "Divorced, separated or widowed"
+   },
+   "p": 0.4298899908,
+   "lo": 0.2540262948,
+   "hi": 0.625428092
+  },
+  {
+   "inputs": {
+    "age_band": "40 and over",
+    "gender": "Female",
+    "scholarship": "Scholarship holder",
+    "displaced": "Not displaced",
+    "application_mode": "Over 23 years old",
+    "course": "Nursing",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Married or de facto union"
+   },
+   "p": 0.0861875199,
+   "lo": 0.0437943269,
+   "hi": 0.1626377744
+  },
+  {
+   "inputs": {
+    "age_band": "17 to 19",
+    "gender": "Female",
+    "scholarship": "Scholarship holder",
+    "displaced": "Displaced",
+    "application_mode": "Special contingents and ordinances",
+    "course": "Informatics Engineering",
+    "previous_qualification": "Basic or incomplete secondary",
+    "marital": "Divorced, separated or widowed"
+   },
+   "p": 0.0683064343,
+   "lo": 0.0232228526,
+   "hi": 0.1843907412
+  },
+  {
+   "inputs": {
+    "age_band": "40 and over",
+    "gender": "Female",
+    "scholarship": "No scholarship",
+    "displaced": "Displaced",
+    "application_mode": "2nd or 3rd phase, general contingent",
+    "course": "Journalism and Communication",
+    "previous_qualification": "Secondary",
+    "marital": "Married or de facto union"
+   },
+   "p": 0.3857529666,
+   "lo": 0.2510231845,
+   "hi": 0.5406010883
+  },
+  {
+   "inputs": {
+    "age_band": "30 to 39",
+    "gender": "Male",
+    "scholarship": "No scholarship",
+    "displaced": "Displaced",
+    "application_mode": "Prior higher or technical qualification",
+    "course": "Animation and Multimedia Design",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Single"
+   },
+   "p": 0.7339584657,
+   "lo": 0.6090310062,
+   "hi": 0.830103234
+  },
+  {
+   "inputs": {
+    "age_band": "17 to 19",
+    "gender": "Female",
+    "scholarship": "Scholarship holder",
+    "displaced": "Displaced",
+    "application_mode": "Transfer or change of course or institution",
+    "course": "Nursing",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Divorced, separated or widowed"
+   },
+   "p": 0.0429138003,
+   "lo": 0.0183884606,
+   "hi": 0.0969197872
+  },
+  {
+   "inputs": {
+    "age_band": "20 to 22",
+    "gender": "Male",
+    "scholarship": "No scholarship",
+    "displaced": "Displaced",
+    "application_mode": "Special contingents and ordinances",
+    "course": "Animation and Multimedia Design",
+    "previous_qualification": "Basic or incomplete secondary",
+    "marital": "Married or de facto union"
+   },
+   "p": 0.2161576353,
+   "lo": 0.0936331652,
+   "hi": 0.4240082243
+  },
+  {
+   "inputs": {
+    "age_band": "20 to 22",
+    "gender": "Female",
+    "scholarship": "No scholarship",
+    "displaced": "Displaced",
+    "application_mode": "2nd or 3rd phase, general contingent",
+    "course": "Social Service (evening)",
+    "previous_qualification": "Basic or incomplete secondary",
+    "marital": "Married or de facto union"
+   },
+   "p": 0.1525938861,
+   "lo": 0.081961055,
+   "hi": 0.2664313876
+  },
+  {
+   "inputs": {
+    "age_band": "20 to 22",
+    "gender": "Female",
+    "scholarship": "No scholarship",
+    "displaced": "Displaced",
+    "application_mode": "Prior higher or technical qualification",
+    "course": "Social Service (evening)",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Single"
+   },
+   "p": 0.1332873694,
+   "lo": 0.0818407354,
+   "hi": 0.2096884725
+  },
+  {
+   "inputs": {
+    "age_band": "23 to 29",
+    "gender": "Male",
+    "scholarship": "No scholarship",
+    "displaced": "Not displaced",
+    "application_mode": "Over 23 years old",
+    "course": "Basic Education",
+    "previous_qualification": "Basic or incomplete secondary",
+    "marital": "Divorced, separated or widowed"
+   },
+   "p": 0.7931469704,
+   "lo": 0.634025921,
+   "hi": 0.894586668
+  },
+  {
+   "inputs": {
+    "age_band": "17 to 19",
+    "gender": "Female",
+    "scholarship": "Scholarship holder",
+    "displaced": "Displaced",
+    "application_mode": "Over 23 years old",
+    "course": "Communication Design",
+    "previous_qualification": "Secondary",
+    "marital": "Married or de facto union"
+   },
+   "p": 0.0311347796,
+   "lo": 0.0158242765,
+   "hi": 0.0603503252
+  },
+  {
+   "inputs": {
+    "age_band": "20 to 22",
+    "gender": "Female",
+    "scholarship": "Scholarship holder",
+    "displaced": "Displaced",
+    "application_mode": "Prior higher or technical qualification",
+    "course": "Animation and Multimedia Design",
+    "previous_qualification": "Basic or incomplete secondary",
+    "marital": "Married or de facto union"
+   },
+   "p": 0.0733386789,
+   "lo": 0.0315692772,
+   "hi": 0.1611755291
+  },
+  {
+   "inputs": {
+    "age_band": "30 to 39",
+    "gender": "Female",
+    "scholarship": "Scholarship holder",
+    "displaced": "Not displaced",
+    "application_mode": "Special contingents and ordinances",
+    "course": "Management",
+    "previous_qualification": "Basic or incomplete secondary",
+    "marital": "Divorced, separated or widowed"
+   },
+   "p": 0.161799421,
+   "lo": 0.061463782,
+   "hi": 0.3626393979
+  },
+  {
+   "inputs": {
+    "age_band": "17 to 19",
+    "gender": "Male",
+    "scholarship": "Scholarship holder",
+    "displaced": "Displaced",
+    "application_mode": "Special contingents and ordinances",
+    "course": "Equinculture",
+    "previous_qualification": "Secondary",
+    "marital": "Married or de facto union"
+   },
+   "p": 0.0729454844,
+   "lo": 0.0285560024,
+   "hi": 0.1739792961
+  },
+  {
+   "inputs": {
+    "age_band": "23 to 29",
+    "gender": "Male",
+    "scholarship": "Scholarship holder",
+    "displaced": "Not displaced",
+    "application_mode": "Special contingents and ordinances",
+    "course": "Social Service",
+    "previous_qualification": "Basic or incomplete secondary",
+    "marital": "Married or de facto union"
+   },
+   "p": 0.0703189663,
+   "lo": 0.0259705808,
+   "hi": 0.1766628183
+  },
+  {
+   "inputs": {
+    "age_band": "17 to 19",
+    "gender": "Female",
+    "scholarship": "Scholarship holder",
+    "displaced": "Displaced",
+    "application_mode": "Over 23 years old",
+    "course": "Informatics Engineering",
+    "previous_qualification": "Secondary",
+    "marital": "Single"
+   },
+   "p": 0.1345166679,
+   "lo": 0.0783031333,
+   "hi": 0.2213922752
+  },
+  {
+   "inputs": {
+    "age_band": "23 to 29",
+    "gender": "Female",
+    "scholarship": "Scholarship holder",
+    "displaced": "Not displaced",
+    "application_mode": "Special contingents and ordinances",
+    "course": "Veterinary Nursing",
+    "previous_qualification": "Secondary",
+    "marital": "Single"
+   },
+   "p": 0.0425660398,
+   "lo": 0.0176912362,
+   "hi": 0.0988949466
+  },
+  {
+   "inputs": {
+    "age_band": "20 to 22",
+    "gender": "Male",
+    "scholarship": "No scholarship",
+    "displaced": "Not displaced",
+    "application_mode": "Prior higher or technical qualification",
+    "course": "Management",
+    "previous_qualification": "Basic or incomplete secondary",
+    "marital": "Single"
+   },
+   "p": 0.3634549125,
+   "lo": 0.2125741331,
+   "hi": 0.5470301715
+  },
+  {
+   "inputs": {
+    "age_band": "23 to 29",
+    "gender": "Male",
+    "scholarship": "Scholarship holder",
+    "displaced": "Displaced",
+    "application_mode": "Special contingents and ordinances",
+    "course": "Tourism",
+    "previous_qualification": "Basic or incomplete secondary",
+    "marital": "Divorced, separated or widowed"
+   },
+   "p": 0.2125035782,
+   "lo": 0.0806777106,
+   "hi": 0.4534785517
+  },
+  {
+   "inputs": {
+    "age_band": "20 to 22",
+    "gender": "Female",
+    "scholarship": "No scholarship",
+    "displaced": "Not displaced",
+    "application_mode": "Prior higher or technical qualification",
+    "course": "Advertising and Marketing Management",
+    "previous_qualification": "Basic or incomplete secondary",
+    "marital": "Divorced, separated or widowed"
+   },
+   "p": 0.2048748856,
+   "lo": 0.0909718416,
+   "hi": 0.3988224572
+  },
+  {
+   "inputs": {
+    "age_band": "23 to 29",
+    "gender": "Female",
+    "scholarship": "Scholarship holder",
+    "displaced": "Displaced",
+    "application_mode": "Transfer or change of course or institution",
+    "course": "Oral Hygiene",
+    "previous_qualification": "Basic or incomplete secondary",
+    "marital": "Divorced, separated or widowed"
+   },
+   "p": 0.2411289529,
+   "lo": 0.1082374794,
+   "hi": 0.4540976548
+  },
+  {
+   "inputs": {
+    "age_band": "40 and over",
+    "gender": "Female",
+    "scholarship": "No scholarship",
+    "displaced": "Displaced",
+    "application_mode": "Special contingents and ordinances",
+    "course": "Nursing",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Married or de facto union"
+   },
+   "p": 0.1131160356,
+   "lo": 0.0442067348,
+   "hi": 0.2601988074
+  },
+  {
+   "inputs": {
+    "age_band": "17 to 19",
+    "gender": "Male",
+    "scholarship": "No scholarship",
+    "displaced": "Displaced",
+    "application_mode": "2nd or 3rd phase, general contingent",
+    "course": "Veterinary Nursing",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Single"
+   },
+   "p": 0.31682532,
+   "lo": 0.1941285775,
+   "hi": 0.4716812124
+  },
+  {
+   "inputs": {
+    "age_band": "23 to 29",
+    "gender": "Male",
+    "scholarship": "No scholarship",
+    "displaced": "Displaced",
+    "application_mode": "Prior higher or technical qualification",
+    "course": "Social Service (evening)",
+    "previous_qualification": "Secondary",
+    "marital": "Married or de facto union"
+   },
+   "p": 0.2039803834,
+   "lo": 0.103062941,
+   "hi": 0.3636506182
+  },
+  {
+   "inputs": {
+    "age_band": "23 to 29",
+    "gender": "Female",
+    "scholarship": "Scholarship holder",
+    "displaced": "Displaced",
+    "application_mode": "Transfer or change of course or institution",
+    "course": "Nursing",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Married or de facto union"
+   },
+   "p": 0.0701230963,
+   "lo": 0.0348883269,
+   "hi": 0.1359306172
+  },
+  {
+   "inputs": {
+    "age_band": "23 to 29",
+    "gender": "Male",
+    "scholarship": "No scholarship",
+    "displaced": "Not displaced",
+    "application_mode": "1st phase, general contingent",
+    "course": "Management (evening)",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Single"
+   },
+   "p": 0.5091989619,
+   "lo": 0.3520963095,
+   "hi": 0.6645054382
+  },
+  {
+   "inputs": {
+    "age_band": "20 to 22",
+    "gender": "Female",
+    "scholarship": "No scholarship",
+    "displaced": "Not displaced",
+    "application_mode": "2nd or 3rd phase, general contingent",
+    "course": "Tourism",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Divorced, separated or widowed"
+   },
+   "p": 0.3378254164,
+   "lo": 0.175495855,
+   "hi": 0.5501227693
+  },
+  {
+   "inputs": {
+    "age_band": "30 to 39",
+    "gender": "Male",
+    "scholarship": "Scholarship holder",
+    "displaced": "Displaced",
+    "application_mode": "Over 23 years old",
+    "course": "Basic Education",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Single"
+   },
+   "p": 0.6965874688,
+   "lo": 0.5156041832,
+   "hi": 0.8319852573
+  },
+  {
+   "inputs": {
+    "age_band": "30 to 39",
+    "gender": "Male",
+    "scholarship": "No scholarship",
+    "displaced": "Displaced",
+    "application_mode": "Over 23 years old",
+    "course": "Management (evening)",
+    "previous_qualification": "Secondary",
+    "marital": "Divorced, separated or widowed"
+   },
+   "p": 0.6499683294,
+   "lo": 0.4877692147,
+   "hi": 0.7835936857
+  },
+  {
+   "inputs": {
+    "age_band": "40 and over",
+    "gender": "Male",
+    "scholarship": "Scholarship holder",
+    "displaced": "Not displaced",
+    "application_mode": "Over 23 years old",
+    "course": "Management",
+    "previous_qualification": "Secondary",
+    "marital": "Single"
+   },
+   "p": 0.3408744061,
+   "lo": 0.2226541639,
+   "hi": 0.4828731056
+  },
+  {
+   "inputs": {
+    "age_band": "30 to 39",
+    "gender": "Female",
+    "scholarship": "Scholarship holder",
+    "displaced": "Not displaced",
+    "application_mode": "1st phase, general contingent",
+    "course": "Biofuel Production Technologies",
+    "previous_qualification": "Secondary",
+    "marital": "Divorced, separated or widowed"
+   },
+   "p": 0.2099046922,
+   "lo": 0.0410157041,
+   "hi": 0.6226754348
+  },
+  {
+   "inputs": {
+    "age_band": "20 to 22",
+    "gender": "Female",
+    "scholarship": "Scholarship holder",
+    "displaced": "Displaced",
+    "application_mode": "Special contingents and ordinances",
+    "course": "Basic Education",
+    "previous_qualification": "Secondary",
+    "marital": "Single"
+   },
+   "p": 0.0859908254,
+   "lo": 0.0380225819,
+   "hi": 0.1829646695
+  },
+  {
+   "inputs": {
+    "age_band": "20 to 22",
+    "gender": "Female",
+    "scholarship": "Scholarship holder",
+    "displaced": "Displaced",
+    "application_mode": "Special contingents and ordinances",
+    "course": "Veterinary Nursing",
+    "previous_qualification": "Secondary",
+    "marital": "Single"
+   },
+   "p": 0.0220208203,
+   "lo": 0.0093515628,
+   "hi": 0.0509709399
+  },
+  {
+   "inputs": {
+    "age_band": "17 to 19",
+    "gender": "Female",
+    "scholarship": "No scholarship",
+    "displaced": "Not displaced",
+    "application_mode": "2nd or 3rd phase, general contingent",
+    "course": "Journalism and Communication",
+    "previous_qualification": "Secondary",
+    "marital": "Single"
+   },
+   "p": 0.2450480113,
+   "lo": 0.1795911756,
+   "hi": 0.3249138508
+  },
+  {
+   "inputs": {
+    "age_band": "20 to 22",
+    "gender": "Male",
+    "scholarship": "No scholarship",
+    "displaced": "Not displaced",
+    "application_mode": "Over 23 years old",
+    "course": "Management",
+    "previous_qualification": "Basic or incomplete secondary",
+    "marital": "Married or de facto union"
+   },
+   "p": 0.3408968744,
+   "lo": 0.2119828275,
+   "hi": 0.4986036569
+  },
+  {
+   "inputs": {
+    "age_band": "23 to 29",
+    "gender": "Male",
+    "scholarship": "Scholarship holder",
+    "displaced": "Displaced",
+    "application_mode": "1st phase, general contingent",
+    "course": "Journalism and Communication",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Divorced, separated or widowed"
+   },
+   "p": 0.2775193454,
+   "lo": 0.1323147721,
+   "hi": 0.4917620674
+  },
+  {
+   "inputs": {
+    "age_band": "30 to 39",
+    "gender": "Female",
+    "scholarship": "Scholarship holder",
+    "displaced": "Displaced",
+    "application_mode": "2nd or 3rd phase, general contingent",
+    "course": "Informatics Engineering",
+    "previous_qualification": "Secondary",
+    "marital": "Single"
+   },
+   "p": 0.4359045936,
+   "lo": 0.2872481366,
+   "hi": 0.5970496476
+  },
+  {
+   "inputs": {
+    "age_band": "23 to 29",
+    "gender": "Male",
+    "scholarship": "No scholarship",
+    "displaced": "Not displaced",
+    "application_mode": "1st phase, general contingent",
+    "course": "Agronomy",
+    "previous_qualification": "Basic or incomplete secondary",
+    "marital": "Married or de facto union"
+   },
+   "p": 0.2722374825,
+   "lo": 0.1476960898,
+   "hi": 0.4467493265
+  },
+  {
+   "inputs": {
+    "age_band": "17 to 19",
+    "gender": "Female",
+    "scholarship": "No scholarship",
+    "displaced": "Displaced",
+    "application_mode": "2nd or 3rd phase, general contingent",
+    "course": "Animation and Multimedia Design",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Married or de facto union"
+   },
+   "p": 0.2682342074,
+   "lo": 0.1479400595,
+   "hi": 0.4362610933
+  },
+  {
+   "inputs": {
+    "age_band": "30 to 39",
+    "gender": "Female",
+    "scholarship": "No scholarship",
+    "displaced": "Displaced",
+    "application_mode": "Special contingents and ordinances",
+    "course": "Agronomy",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Divorced, separated or widowed"
+   },
+   "p": 0.2273913683,
+   "lo": 0.0859853803,
+   "hi": 0.4793790236
+  },
+  {
+   "inputs": {
+    "age_band": "40 and over",
+    "gender": "Female",
+    "scholarship": "No scholarship",
+    "displaced": "Not displaced",
+    "application_mode": "Transfer or change of course or institution",
+    "course": "Social Service (evening)",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Married or de facto union"
+   },
+   "p": 0.2007682012,
+   "lo": 0.1107500774,
+   "hi": 0.3362841166
+  },
+  {
+   "inputs": {
+    "age_band": "20 to 22",
+    "gender": "Male",
+    "scholarship": "No scholarship",
+    "displaced": "Displaced",
+    "application_mode": "1st phase, general contingent",
+    "course": "Management",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Married or de facto union"
+   },
+   "p": 0.265495155,
+   "lo": 0.1502413316,
+   "hi": 0.4249487756
+  },
+  {
+   "inputs": {
+    "age_band": "40 and over",
+    "gender": "Female",
+    "scholarship": "No scholarship",
+    "displaced": "Not displaced",
+    "application_mode": "Prior higher or technical qualification",
+    "course": "Animation and Multimedia Design",
+    "previous_qualification": "Basic or incomplete secondary",
+    "marital": "Divorced, separated or widowed"
+   },
+   "p": 0.4794615633,
+   "lo": 0.2638536436,
+   "hi": 0.7030020108
+  },
+  {
+   "inputs": {
+    "age_band": "40 and over",
+    "gender": "Male",
+    "scholarship": "Scholarship holder",
+    "displaced": "Not displaced",
+    "application_mode": "Transfer or change of course or institution",
+    "course": "Management",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Married or de facto union"
+   },
+   "p": 0.2286235063,
+   "lo": 0.1221083982,
+   "hi": 0.3870840326
+  },
+  {
+   "inputs": {
+    "age_band": "40 and over",
+    "gender": "Male",
+    "scholarship": "No scholarship",
+    "displaced": "Not displaced",
+    "application_mode": "2nd or 3rd phase, general contingent",
+    "course": "Informatics Engineering",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Married or de facto union"
+   },
+   "p": 0.6620627248,
+   "lo": 0.4653820204,
+   "hi": 0.8151298618
+  },
+  {
+   "inputs": {
+    "age_band": "23 to 29",
+    "gender": "Female",
+    "scholarship": "Scholarship holder",
+    "displaced": "Displaced",
+    "application_mode": "1st phase, general contingent",
+    "course": "Basic Education",
+    "previous_qualification": "Basic or incomplete secondary",
+    "marital": "Married or de facto union"
+   },
+   "p": 0.2488415998,
+   "lo": 0.1351638324,
+   "hi": 0.4125224198
+  },
+  {
+   "inputs": {
+    "age_band": "17 to 19",
+    "gender": "Female",
+    "scholarship": "Scholarship holder",
+    "displaced": "Displaced",
+    "application_mode": "Prior higher or technical qualification",
+    "course": "Informatics Engineering",
+    "previous_qualification": "Secondary",
+    "marital": "Single"
+   },
+   "p": 0.085145771,
+   "lo": 0.0419152916,
+   "hi": 0.1652718349
+  },
+  {
+   "inputs": {
+    "age_band": "20 to 22",
+    "gender": "Male",
+    "scholarship": "No scholarship",
+    "displaced": "Not displaced",
+    "application_mode": "1st phase, general contingent",
+    "course": "Management (evening)",
+    "previous_qualification": "Basic or incomplete secondary",
+    "marital": "Divorced, separated or widowed"
+   },
+   "p": 0.3072090146,
+   "lo": 0.1603998623,
+   "hi": 0.5072134783
+  },
+  {
+   "inputs": {
+    "age_band": "30 to 39",
+    "gender": "Female",
+    "scholarship": "Scholarship holder",
+    "displaced": "Not displaced",
+    "application_mode": "Special contingents and ordinances",
+    "course": "Journalism and Communication",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Divorced, separated or widowed"
+   },
+   "p": 0.1380953811,
+   "lo": 0.0493679839,
+   "hi": 0.3307986573
+  },
+  {
+   "inputs": {
+    "age_band": "20 to 22",
+    "gender": "Female",
+    "scholarship": "Scholarship holder",
+    "displaced": "Not displaced",
+    "application_mode": "2nd or 3rd phase, general contingent",
+    "course": "Oral Hygiene",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Single"
+   },
+   "p": 0.1499618885,
+   "lo": 0.0718506821,
+   "hi": 0.2867548577
+  },
+  {
+   "inputs": {
+    "age_band": "17 to 19",
+    "gender": "Female",
+    "scholarship": "No scholarship",
+    "displaced": "Displaced",
+    "application_mode": "Over 23 years old",
+    "course": "Tourism",
+    "previous_qualification": "Secondary",
+    "marital": "Single"
+   },
+   "p": 0.277940597,
+   "lo": 0.1837478506,
+   "hi": 0.3969377096
+  },
+  {
+   "inputs": {
+    "age_band": "23 to 29",
+    "gender": "Male",
+    "scholarship": "Scholarship holder",
+    "displaced": "Displaced",
+    "application_mode": "2nd or 3rd phase, general contingent",
+    "course": "Journalism and Communication",
+    "previous_qualification": "Secondary",
+    "marital": "Married or de facto union"
+   },
+   "p": 0.2325978469,
+   "lo": 0.1372481868,
+   "hi": 0.3660816405
+  },
+  {
+   "inputs": {
+    "age_band": "30 to 39",
+    "gender": "Male",
+    "scholarship": "No scholarship",
+    "displaced": "Displaced",
+    "application_mode": "2nd or 3rd phase, general contingent",
+    "course": "Communication Design",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Divorced, separated or widowed"
+   },
+   "p": 0.6606965909,
+   "lo": 0.4361322626,
+   "hi": 0.8305702553
+  },
+  {
+   "inputs": {
+    "age_band": "30 to 39",
+    "gender": "Male",
+    "scholarship": "Scholarship holder",
+    "displaced": "Displaced",
+    "application_mode": "1st phase, general contingent",
+    "course": "Tourism",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Single"
+   },
+   "p": 0.4582722821,
+   "lo": 0.2856386954,
+   "hi": 0.6415415397
+  },
+  {
+   "inputs": {
+    "age_band": "20 to 22",
+    "gender": "Male",
+    "scholarship": "No scholarship",
+    "displaced": "Not displaced",
+    "application_mode": "Special contingents and ordinances",
+    "course": "Management",
+    "previous_qualification": "Basic or incomplete secondary",
+    "marital": "Divorced, separated or widowed"
+   },
+   "p": 0.2298957411,
+   "lo": 0.0933405939,
+   "hi": 0.4639903921
+  },
+  {
+   "inputs": {
+    "age_band": "20 to 22",
+    "gender": "Female",
+    "scholarship": "Scholarship holder",
+    "displaced": "Not displaced",
+    "application_mode": "2nd or 3rd phase, general contingent",
+    "course": "Social Service (evening)",
+    "previous_qualification": "Secondary",
+    "marital": "Married or de facto union"
+   },
+   "p": 0.0310534361,
+   "lo": 0.0168519585,
+   "hi": 0.0565345828
+  },
+  {
+   "inputs": {
+    "age_band": "23 to 29",
+    "gender": "Male",
+    "scholarship": "Scholarship holder",
+    "displaced": "Displaced",
+    "application_mode": "Special contingents and ordinances",
+    "course": "Basic Education",
+    "previous_qualification": "Secondary",
+    "marital": "Divorced, separated or widowed"
+   },
+   "p": 0.2492717628,
+   "lo": 0.102245927,
+   "hi": 0.4918795165
+  },
+  {
+   "inputs": {
+    "age_band": "23 to 29",
+    "gender": "Male",
+    "scholarship": "No scholarship",
+    "displaced": "Not displaced",
+    "application_mode": "Prior higher or technical qualification",
+    "course": "Tourism",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Divorced, separated or widowed"
+   },
+   "p": 0.522409976,
+   "lo": 0.3367659522,
+   "hi": 0.7020627212
+  },
+  {
+   "inputs": {
+    "age_band": "17 to 19",
+    "gender": "Female",
+    "scholarship": "No scholarship",
+    "displaced": "Not displaced",
+    "application_mode": "Special contingents and ordinances",
+    "course": "Management",
+    "previous_qualification": "Basic or incomplete secondary",
+    "marital": "Married or de facto union"
+   },
+   "p": 0.0822773019,
+   "lo": 0.0329515475,
+   "hi": 0.1908665101
+  },
+  {
+   "inputs": {
+    "age_band": "23 to 29",
+    "gender": "Female",
+    "scholarship": "No scholarship",
+    "displaced": "Not displaced",
+    "application_mode": "Prior higher or technical qualification",
+    "course": "Tourism",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Single"
+   },
+   "p": 0.4148138831,
+   "lo": 0.3008753925,
+   "hi": 0.5386559034
+  },
+  {
+   "inputs": {
+    "age_band": "40 and over",
+    "gender": "Female",
+    "scholarship": "No scholarship",
+    "displaced": "Displaced",
+    "application_mode": "Special contingents and ordinances",
+    "course": "Communication Design",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Single"
+   },
+   "p": 0.2208190011,
+   "lo": 0.0899942415,
+   "hi": 0.4481632349
+  },
+  {
+   "inputs": {
+    "age_band": "23 to 29",
+    "gender": "Female",
+    "scholarship": "Scholarship holder",
+    "displaced": "Displaced",
+    "application_mode": "Special contingents and ordinances",
+    "course": "Basic Education",
+    "previous_qualification": "Basic or incomplete secondary",
+    "marital": "Married or de facto union"
+   },
+   "p": 0.1495544307,
+   "lo": 0.0591191691,
+   "hi": 0.3298333843
+  },
+  {
+   "inputs": {
+    "age_band": "23 to 29",
+    "gender": "Male",
+    "scholarship": "No scholarship",
+    "displaced": "Displaced",
+    "application_mode": "Transfer or change of course or institution",
+    "course": "Advertising and Marketing Management",
+    "previous_qualification": "Basic or incomplete secondary",
+    "marital": "Divorced, separated or widowed"
+   },
+   "p": 0.6179839824,
+   "lo": 0.4134674777,
+   "hi": 0.7877890055
+  },
+  {
+   "inputs": {
+    "age_band": "30 to 39",
+    "gender": "Female",
+    "scholarship": "Scholarship holder",
+    "displaced": "Displaced",
+    "application_mode": "Transfer or change of course or institution",
+    "course": "Communication Design",
+    "previous_qualification": "Secondary",
+    "marital": "Divorced, separated or widowed"
+   },
+   "p": 0.1502808508,
+   "lo": 0.0757043658,
+   "hi": 0.2763571616
+  },
+  {
+   "inputs": {
+    "age_band": "17 to 19",
+    "gender": "Male",
+    "scholarship": "Scholarship holder",
+    "displaced": "Displaced",
+    "application_mode": "1st phase, general contingent",
+    "course": "Animation and Multimedia Design",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Married or de facto union"
+   },
+   "p": 0.1085440445,
+   "lo": 0.0537047054,
+   "hi": 0.2071245325
+  },
+  {
+   "inputs": {
+    "age_band": "40 and over",
+    "gender": "Female",
+    "scholarship": "Scholarship holder",
+    "displaced": "Displaced",
+    "application_mode": "Prior higher or technical qualification",
+    "course": "Social Service (evening)",
+    "previous_qualification": "Basic or incomplete secondary",
+    "marital": "Divorced, separated or widowed"
+   },
+   "p": 0.1094082335,
+   "lo": 0.0465585151,
+   "hi": 0.2360909085
+  },
+  {
+   "inputs": {
+    "age_band": "30 to 39",
+    "gender": "Female",
+    "scholarship": "Scholarship holder",
+    "displaced": "Displaced",
+    "application_mode": "Over 23 years old",
+    "course": "Tourism",
+    "previous_qualification": "Basic or incomplete secondary",
+    "marital": "Single"
+   },
+   "p": 0.4396210858,
+   "lo": 0.2943808328,
+   "hi": 0.595994125
+  },
+  {
+   "inputs": {
+    "age_band": "30 to 39",
+    "gender": "Male",
+    "scholarship": "Scholarship holder",
+    "displaced": "Displaced",
+    "application_mode": "Special contingents and ordinances",
+    "course": "Animation and Multimedia Design",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Divorced, separated or widowed"
+   },
+   "p": 0.3094055228,
+   "lo": 0.1262005111,
+   "hi": 0.5815595848
+  },
+  {
+   "inputs": {
+    "age_band": "20 to 22",
+    "gender": "Male",
+    "scholarship": "Scholarship holder",
+    "displaced": "Displaced",
+    "application_mode": "1st phase, general contingent",
+    "course": "Informatics Engineering",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Single"
+   },
+   "p": 0.2281300881,
+   "lo": 0.1271122492,
+   "hi": 0.3749442308
+  },
+  {
+   "inputs": {
+    "age_band": "30 to 39",
+    "gender": "Female",
+    "scholarship": "Scholarship holder",
+    "displaced": "Not displaced",
+    "application_mode": "Over 23 years old",
+    "course": "Informatics Engineering",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Married or de facto union"
+   },
+   "p": 0.2966503425,
+   "lo": 0.1668685017,
+   "hi": 0.4703810695
+  },
+  {
+   "inputs": {
+    "age_band": "17 to 19",
+    "gender": "Female",
+    "scholarship": "Scholarship holder",
+    "displaced": "Not displaced",
+    "application_mode": "Special contingents and ordinances",
+    "course": "Management (evening)",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Married or de facto union"
+   },
+   "p": 0.0190248707,
+   "lo": 0.0068260476,
+   "hi": 0.0518852986
+  },
+  {
+   "inputs": {
+    "age_band": "30 to 39",
+    "gender": "Male",
+    "scholarship": "Scholarship holder",
+    "displaced": "Displaced",
+    "application_mode": "Transfer or change of course or institution",
+    "course": "Advertising and Marketing Management",
+    "previous_qualification": "Secondary",
+    "marital": "Divorced, separated or widowed"
+   },
+   "p": 0.3517171036,
+   "lo": 0.2026781641,
+   "hi": 0.5365942206
+  },
+  {
+   "inputs": {
+    "age_band": "20 to 22",
+    "gender": "Female",
+    "scholarship": "No scholarship",
+    "displaced": "Displaced",
+    "application_mode": "1st phase, general contingent",
+    "course": "Advertising and Marketing Management",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Single"
+   },
+   "p": 0.2583235937,
+   "lo": 0.1551056896,
+   "hi": 0.397882659
+  },
+  {
+   "inputs": {
+    "age_band": "40 and over",
+    "gender": "Female",
+    "scholarship": "No scholarship",
+    "displaced": "Displaced",
+    "application_mode": "Prior higher or technical qualification",
+    "course": "Agronomy",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Divorced, separated or widowed"
+   },
+   "p": 0.2557645795,
+   "lo": 0.1373455247,
+   "hi": 0.425878832
+  },
+  {
+   "inputs": {
+    "age_band": "17 to 19",
+    "gender": "Female",
+    "scholarship": "Scholarship holder",
+    "displaced": "Displaced",
+    "application_mode": "Prior higher or technical qualification",
+    "course": "Informatics Engineering",
+    "previous_qualification": "Secondary",
+    "marital": "Divorced, separated or widowed"
+   },
+   "p": 0.0743783955,
+   "lo": 0.0306111744,
+   "hi": 0.1697642028
+  },
+  {
+   "inputs": {
+    "age_band": "20 to 22",
+    "gender": "Female",
+    "scholarship": "No scholarship",
+    "displaced": "Displaced",
+    "application_mode": "Transfer or change of course or institution",
+    "course": "Animation and Multimedia Design",
+    "previous_qualification": "Secondary",
+    "marital": "Single"
+   },
+   "p": 0.2924737111,
+   "lo": 0.1993474631,
+   "hi": 0.4069900883
+  },
+  {
+   "inputs": {
+    "age_band": "40 and over",
+    "gender": "Male",
+    "scholarship": "Scholarship holder",
+    "displaced": "Displaced",
+    "application_mode": "Transfer or change of course or institution",
+    "course": "Nursing",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Single"
+   },
+   "p": 0.2222849638,
+   "lo": 0.1168608289,
+   "hi": 0.3817089414
+  },
+  {
+   "inputs": {
+    "age_band": "30 to 39",
+    "gender": "Female",
+    "scholarship": "Scholarship holder",
+    "displaced": "Not displaced",
+    "application_mode": "2nd or 3rd phase, general contingent",
+    "course": "Animation and Multimedia Design",
+    "previous_qualification": "Basic or incomplete secondary",
+    "marital": "Single"
+   },
+   "p": 0.4718797046,
+   "lo": 0.295292184,
+   "hi": 0.6557966075
+  },
+  {
+   "inputs": {
+    "age_band": "17 to 19",
+    "gender": "Male",
+    "scholarship": "No scholarship",
+    "displaced": "Not displaced",
+    "application_mode": "Transfer or change of course or institution",
+    "course": "Nursing",
+    "previous_qualification": "Secondary",
+    "marital": "Divorced, separated or widowed"
+   },
+   "p": 0.1433795044,
+   "lo": 0.0750902377,
+   "hi": 0.2565468635
+  },
+  {
+   "inputs": {
+    "age_band": "23 to 29",
+    "gender": "Female",
+    "scholarship": "No scholarship",
+    "displaced": "Displaced",
+    "application_mode": "Special contingents and ordinances",
+    "course": "Communication Design",
+    "previous_qualification": "Basic or incomplete secondary",
+    "marital": "Divorced, separated or widowed"
+   },
+   "p": 0.1940978375,
+   "lo": 0.0735833137,
+   "hi": 0.4220669292
+  },
+  {
+   "inputs": {
+    "age_band": "40 and over",
+    "gender": "Male",
+    "scholarship": "Scholarship holder",
+    "displaced": "Not displaced",
+    "application_mode": "Transfer or change of course or institution",
+    "course": "Basic Education",
+    "previous_qualification": "Secondary",
+    "marital": "Single"
+   },
+   "p": 0.4553939055,
+   "lo": 0.2962034774,
+   "hi": 0.6242536923
+  },
+  {
+   "inputs": {
+    "age_band": "40 and over",
+    "gender": "Female",
+    "scholarship": "No scholarship",
+    "displaced": "Not displaced",
+    "application_mode": "Transfer or change of course or institution",
+    "course": "Journalism and Communication",
+    "previous_qualification": "Secondary",
+    "marital": "Married or de facto union"
+   },
+   "p": 0.2738054771,
+   "lo": 0.1715092243,
+   "hi": 0.4071327174
+  },
+  {
+   "inputs": {
+    "age_band": "23 to 29",
+    "gender": "Male",
+    "scholarship": "No scholarship",
+    "displaced": "Not displaced",
+    "application_mode": "Prior higher or technical qualification",
+    "course": "Advertising and Marketing Management",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Married or de facto union"
+   },
+   "p": 0.3688624537,
+   "lo": 0.2402733418,
+   "hi": 0.5192358785
+  },
+  {
+   "inputs": {
+    "age_band": "40 and over",
+    "gender": "Male",
+    "scholarship": "Scholarship holder",
+    "displaced": "Displaced",
+    "application_mode": "2nd or 3rd phase, general contingent",
+    "course": "Social Service",
+    "previous_qualification": "Basic or incomplete secondary",
+    "marital": "Divorced, separated or widowed"
+   },
+   "p": 0.3355697663,
+   "lo": 0.1749097645,
+   "hi": 0.5461241299
+  },
+  {
+   "inputs": {
+    "age_band": "23 to 29",
+    "gender": "Male",
+    "scholarship": "No scholarship",
+    "displaced": "Not displaced",
+    "application_mode": "Special contingents and ordinances",
+    "course": "Agronomy",
+    "previous_qualification": "Secondary",
+    "marital": "Single"
+   },
+   "p": 0.1954780741,
+   "lo": 0.0902167759,
+   "hi": 0.3731775443
+  },
+  {
+   "inputs": {
+    "age_band": "23 to 29",
+    "gender": "Male",
+    "scholarship": "Scholarship holder",
+    "displaced": "Not displaced",
+    "application_mode": "Prior higher or technical qualification",
+    "course": "Tourism",
+    "previous_qualification": "Secondary",
+    "marital": "Married or de facto union"
+   },
+   "p": 0.1382382732,
+   "lo": 0.0665855652,
+   "hi": 0.2650978191
+  },
+  {
+   "inputs": {
+    "age_band": "23 to 29",
+    "gender": "Female",
+    "scholarship": "No scholarship",
+    "displaced": "Displaced",
+    "application_mode": "1st phase, general contingent",
+    "course": "Oral Hygiene",
+    "previous_qualification": "Secondary",
+    "marital": "Single"
+   },
+   "p": 0.4035488013,
+   "lo": 0.2575991143,
+   "hi": 0.5688313839
+  },
+  {
+   "inputs": {
+    "age_band": "17 to 19",
+    "gender": "Male",
+    "scholarship": "Scholarship holder",
+    "displaced": "Displaced",
+    "application_mode": "1st phase, general contingent",
+    "course": "Oral Hygiene",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Divorced, separated or widowed"
+   },
+   "p": 0.138823038,
+   "lo": 0.0540410712,
+   "hi": 0.3126530272
+  },
+  {
+   "inputs": {
+    "age_band": "40 and over",
+    "gender": "Female",
+    "scholarship": "Scholarship holder",
+    "displaced": "Not displaced",
+    "application_mode": "2nd or 3rd phase, general contingent",
+    "course": "Oral Hygiene",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Single"
+   },
+   "p": 0.316998503,
+   "lo": 0.1522686687,
+   "hi": 0.5453047111
+  },
+  {
+   "inputs": {
+    "age_band": "30 to 39",
+    "gender": "Male",
+    "scholarship": "Scholarship holder",
+    "displaced": "Not displaced",
+    "application_mode": "1st phase, general contingent",
+    "course": "Tourism",
+    "previous_qualification": "Secondary",
+    "marital": "Married or de facto union"
+   },
+   "p": 0.2294003938,
+   "lo": 0.1390022312,
+   "hi": 0.3543898932
+  },
+  {
+   "inputs": {
+    "age_band": "20 to 22",
+    "gender": "Female",
+    "scholarship": "Scholarship holder",
+    "displaced": "Displaced",
+    "application_mode": "Special contingents and ordinances",
+    "course": "Management",
+    "previous_qualification": "Secondary",
+    "marital": "Single"
+   },
+   "p": 0.0441587815,
+   "lo": 0.0196844427,
+   "hi": 0.0960804854
+  },
+  {
+   "inputs": {
+    "age_band": "30 to 39",
+    "gender": "Male",
+    "scholarship": "No scholarship",
+    "displaced": "Not displaced",
+    "application_mode": "Transfer or change of course or institution",
+    "course": "Animation and Multimedia Design",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Divorced, separated or widowed"
+   },
+   "p": 0.7316480054,
+   "lo": 0.5378173978,
+   "hi": 0.8646476802
+  },
+  {
+   "inputs": {
+    "age_band": "20 to 22",
+    "gender": "Male",
+    "scholarship": "Scholarship holder",
+    "displaced": "Displaced",
+    "application_mode": "Over 23 years old",
+    "course": "Informatics Engineering",
+    "previous_qualification": "Basic or incomplete secondary",
+    "marital": "Divorced, separated or widowed"
+   },
+   "p": 0.2972348919,
+   "lo": 0.1510963296,
+   "hi": 0.5012570323
+  },
+  {
+   "inputs": {
+    "age_band": "40 and over",
+    "gender": "Female",
+    "scholarship": "Scholarship holder",
+    "displaced": "Displaced",
+    "application_mode": "Over 23 years old",
+    "course": "Informatics Engineering",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Single"
+   },
+   "p": 0.3890754932,
+   "lo": 0.2183932494,
+   "hi": 0.5921002199
+  },
+  {
+   "inputs": {
+    "age_band": "20 to 22",
+    "gender": "Female",
+    "scholarship": "No scholarship",
+    "displaced": "Displaced",
+    "application_mode": "1st phase, general contingent",
+    "course": "Tourism",
+    "previous_qualification": "Secondary",
+    "marital": "Married or de facto union"
+   },
+   "p": 0.1430604636,
+   "lo": 0.088996201,
+   "hi": 0.221965895
+  },
+  {
+   "inputs": {
+    "age_band": "20 to 22",
+    "gender": "Male",
+    "scholarship": "Scholarship holder",
+    "displaced": "Displaced",
+    "application_mode": "1st phase, general contingent",
+    "course": "Advertising and Marketing Management",
+    "previous_qualification": "Basic or incomplete secondary",
+    "marital": "Single"
+   },
+   "p": 0.1796088217,
+   "lo": 0.105618766,
+   "hi": 0.2887004624
+  },
+  {
+   "inputs": {
+    "age_band": "17 to 19",
+    "gender": "Male",
+    "scholarship": "No scholarship",
+    "displaced": "Displaced",
+    "application_mode": "Transfer or change of course or institution",
+    "course": "Management (evening)",
+    "previous_qualification": "Basic or incomplete secondary",
+    "marital": "Divorced, separated or widowed"
+   },
+   "p": 0.337780678,
+   "lo": 0.1754057062,
+   "hi": 0.5501779938
+  },
+  {
+   "inputs": {
+    "age_band": "40 and over",
+    "gender": "Male",
+    "scholarship": "Scholarship holder",
+    "displaced": "Displaced",
+    "application_mode": "1st phase, general contingent",
+    "course": "Animation and Multimedia Design",
+    "previous_qualification": "Secondary",
+    "marital": "Married or de facto union"
+   },
+   "p": 0.219822681,
+   "lo": 0.125035091,
+   "hi": 0.3571373517
+  },
+  {
+   "inputs": {
+    "age_band": "40 and over",
+    "gender": "Male",
+    "scholarship": "No scholarship",
+    "displaced": "Displaced",
+    "application_mode": "Special contingents and ordinances",
+    "course": "Biofuel Production Technologies",
+    "previous_qualification": "Higher or post-secondary",
+    "marital": "Divorced, separated or widowed"
+   },
+   "p": 0.4693385212,
+   "lo": 0.1049861154,
+   "hi": 0.8695982354
+  },
+  {
+   "inputs": {
+    "age_band": "17 to 19",
+    "gender": "Male",
+    "scholarship": "No scholarship",
+    "displaced": "Displaced",
+    "application_mode": "Special contingents and ordinances",
+    "course": "Journalism and Communication",
+    "previous_qualification": "Basic or incomplete secondary",
+    "marital": "Married or de facto union"
+   },
+   "p": 0.1485271304,
+   "lo": 0.0616271051,
+   "hi": 0.3166187837
+  }
+ ]
+}

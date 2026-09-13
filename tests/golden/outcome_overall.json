@@ -1,0 +1,43 @@
+{
+ "schema": "outcome_overall.v1",
+ "id": "outcome_overall",
+ "generated_at": "2026-09-13T05:45:46.793162+00:00",
+ "n_total": 4424,
+ "outcomes": [
+  "Dropout",
+  "Enrolled",
+  "Graduate"
+ ],
+ "ci": {
+  "method": "wilson",
+  "level": 0.95
+ },
+ "rows": [
+  {
+   "outcome": "Dropout",
+   "n": 1421,
+   "p": 0.321203,
+   "lo": 0.307603,
+   "hi": 0.335112
+  },
+  {
+   "outcome": "Enrolled",
+   "n": 794,
+   "p": 0.179476,
+   "lo": 0.168447,
+   "hi": 0.19106
+  },
+  {
+   "outcome": "Graduate",
+   "n": 2209,
+   "p": 0.499322,
+   "lo": 0.484595,
+   "hi": 0.51405
+  }
+ ],
+ "tiles": {
+  "Dropout": 32,
+  "Enrolled": 18,
+  "Graduate": 50
+ }
+}

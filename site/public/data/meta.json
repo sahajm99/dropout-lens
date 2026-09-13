@@ -1,0 +1,31 @@
+{
+ "schema": "meta.v1",
+ "id": "meta",
+ "generated_at": "2026-09-13T05:47:49.812437+00:00",
+ "source_file": "data/raw/dataset.csv",
+ "sha256": "ff327a7ed348140d42dd682df49e36331e2ca91ca41b8fb9ad911a4f5fba0f4e",
+ "n_rows": 4424,
+ "n_columns": 35,
+ "n_features": 34,
+ "n_duplicate_rows": 0,
+ "outcome_counts": {
+  "Dropout": 1421,
+  "Enrolled": 794,
+  "Graduate": 2209
+ },
+ "seed": 20260912,
+ "files": [
+  "calibration.json",
+  "claims.json",
+  "estimator.json",
+  "estimator_parity.json",
+  "fairness.json",
+  "hypothesis_tests.json",
+  "meta.json",
+  "model_metrics.json",
+  "odds_ratios.json",
+  "outcome_by_group.json",
+  "outcome_overall.json",
+  "permutation_importance.json"
+ ]
+}

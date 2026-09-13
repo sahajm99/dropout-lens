@@ -1,0 +1,565 @@
+{
+ "schema": "permutation_importance.v1",
+ "id": "permutation_importance",
+ "generated_at": "2026-09-13T05:47:49.777052+00:00",
+ "repeats": 10,
+ "seed": 20260912,
+ "scoring": {
+  "binary": "roc_auc",
+  "multiclass": "macro_f1"
+ },
+ "results": [
+  {
+   "target": "binary",
+   "feature_set": "enrolment",
+   "model": "hgb",
+   "leaks": false,
+   "baseline_score": 0.78452,
+   "features": [
+    {
+     "variable": "tuition",
+     "label": "Tuition fees",
+     "mean": 0.105987,
+     "sd": 0.007904
+    },
+    {
+     "variable": "age",
+     "label": "Age at enrolment (years)",
+     "mean": 0.049457,
+     "sd": 0.008893
+    },
+    {
+     "variable": "course",
+     "label": "Course",
+     "mean": 0.031006,
+     "sd": 0.011381
+    },
+    {
+     "variable": "scholarship",
+     "label": "Scholarship",
+     "mean": 0.027049,
+     "sd": 0.008737
+    },
+    {
+     "variable": "debtor",
+     "label": "Debtor status",
+     "mean": 0.011577,
+     "sd": 0.002596
+    },
+    {
+     "variable": "gender",
+     "label": "Gender",
+     "mean": 0.011278,
+     "sd": 0.003279
+    },
+    {
+     "variable": "application_mode",
+     "label": "Application route",
+     "mean": 0.003613,
+     "sd": 0.003479
+    },
+    {
+     "variable": "previous_qualification",
+     "label": "Previous qualification",
+     "mean": 0.003366,
+     "sd": 0.001503
+    },
+    {
+     "variable": "gdp",
+     "label": "GDP at enrolment (cohort marker)",
+     "mean": 0.00208,
+     "sd": 0.003197
+    },
+    {
+     "variable": "unemployment",
+     "label": "Unemployment rate at enrolment (cohort marker)",
+     "mean": 0.001592,
+     "sd": 0.003807
+    },
+    {
+     "variable": "age_band",
+     "label": "Age at enrolment",
+     "mean": 0.001264,
+     "sd": 0.001149
+    },
+    {
+     "variable": "international",
+     "label": "Nationality",
+     "mean": 0.001093,
+     "sd": 0.001317
+    },
+    {
+     "variable": "displaced",
+     "label": "Displaced",
+     "mean": 0.000219,
+     "sd": 0.002531
+    },
+    {
+     "variable": "inflation",
+     "label": "Inflation rate at enrolment (cohort marker)",
+     "mean": 0.00012,
+     "sd": 0.000915
+    },
+    {
+     "variable": "special_needs",
+     "label": "Educational special needs",
+     "mean": -9.8e-05,
+     "sd": 0.000278
+    },
+    {
+     "variable": "attendance",
+     "label": "Attendance",
+     "mean": -0.00039,
+     "sd": 0.000858
+    },
+    {
+     "variable": "marital",
+     "label": "Marital status",
+     "mean": -0.001226,
+     "sd": 0.002089
+    },
+    {
+     "variable": "app_order",
+     "label": "Application order",
+     "mean": -0.006965,
+     "sd": 0.002556
+    }
+   ]
+  },
+  {
+   "target": "binary",
+   "feature_set": "after_s1",
+   "model": "hgb",
+   "leaks": true,
+   "baseline_score": 0.892664,
+   "features": [
+    {
+     "variable": "s1_approved",
+     "label": "First-semester units approved",
+     "mean": 0.103317,
+     "sd": 0.009844
+    },
+    {
+     "variable": "tuition",
+     "label": "Tuition fees",
+     "mean": 0.047194,
+     "sd": 0.006604
+    },
+    {
+     "variable": "approval_band_s1",
+     "label": "First-semester approval rate",
+     "mean": 0.012195,
+     "sd": 0.003664
+    },
+    {
+     "variable": "age",
+     "label": "Age at enrolment (years)",
+     "mean": 0.007542,
+     "sd": 0.003502
+    },
+    {
+     "variable": "debtor",
+     "label": "Debtor status",
+     "mean": 0.004834,
+     "sd": 0.00142
+    },
+    {
+     "variable": "s1_enrolled",
+     "label": "First-semester units enrolled",
+     "mean": 0.004459,
+     "sd": 0.002396
+    },
+    {
+     "variable": "scholarship",
+     "label": "Scholarship",
+     "mean": 0.003775,
+     "sd": 0.002763
+    },
+    {
+     "variable": "course",
+     "label": "Course",
+     "mean": 0.003412,
+     "sd": 0.001877
+    },
+    {
+     "variable": "gender",
+     "label": "Gender",
+     "mean": 0.002863,
+     "sd": 0.002003
+    },
+    {
+     "variable": "s1_grade",
+     "label": "First-semester grade",
+     "mean": 0.002729,
+     "sd": 0.002208
+    },
+    {
+     "variable": "s1_credited",
+     "label": "First-semester units credited",
+     "mean": 0.002249,
+     "sd": 0.000482
+    },
+    {
+     "variable": "s1_evaluations",
+     "label": "First-semester evaluations",
+     "mean": 0.001244,
+     "sd": 0.000855
+    },
+    {
+     "variable": "app_order",
+     "label": "Application order",
+     "mean": 0.000505,
+     "sd": 0.00051
+    },
+    {
+     "variable": "gdp",
+     "label": "GDP at enrolment (cohort marker)",
+     "mean": 0.000435,
+     "sd": 0.000917
+    },
+    {
+     "variable": "unemployment",
+     "label": "Unemployment rate at enrolment (cohort marker)",
+     "mean": 0.000389,
+     "sd": 0.000649
+    },
+    {
+     "variable": "displaced",
+     "label": "Displaced",
+     "mean": 0.000244,
+     "sd": 0.001024
+    },
+    {
+     "variable": "previous_qualification",
+     "label": "Previous qualification",
+     "mean": 0.000218,
+     "sd": 7.5e-05
+    },
+    {
+     "variable": "inflation",
+     "label": "Inflation rate at enrolment (cohort marker)",
+     "mean": 0.000205,
+     "sd": 0.000237
+    },
+    {
+     "variable": "application_mode",
+     "label": "Application route",
+     "mean": 0.00014,
+     "sd": 0.001209
+    },
+    {
+     "variable": "marital",
+     "label": "Marital status",
+     "mean": 6.9e-05,
+     "sd": 0.000145
+    },
+    {
+     "variable": "s1_without_eval",
+     "label": "First-semester units without evaluation",
+     "mean": 2.9e-05,
+     "sd": 0.000127
+    },
+    {
+     "variable": "special_needs",
+     "label": "Educational special needs",
+     "mean": 0.0,
+     "sd": 0.0
+    },
+    {
+     "variable": "attendance",
+     "label": "Attendance",
+     "mean": -9e-06,
+     "sd": 2.4e-05
+    },
+    {
+     "variable": "international",
+     "label": "Nationality",
+     "mean": -2.4e-05,
+     "sd": 4.4e-05
+    },
+    {
+     "variable": "age_band",
+     "label": "Age at enrolment",
+     "mean": -0.000594,
+     "sd": 0.000246
+    }
+   ]
+  },
+  {
+   "target": "multiclass",
+   "feature_set": "enrolment",
+   "model": "hgb",
+   "leaks": false,
+   "baseline_score": 0.549756,
+   "features": [
+    {
+     "variable": "tuition",
+     "label": "Tuition fees",
+     "mean": 0.075271,
+     "sd": 0.007542
+    },
+    {
+     "variable": "course",
+     "label": "Course",
+     "mean": 0.061436,
+     "sd": 0.013759
+    },
+    {
+     "variable": "age",
+     "label": "Age at enrolment (years)",
+     "mean": 0.039785,
+     "sd": 0.010281
+    },
+    {
+     "variable": "gdp",
+     "label": "GDP at enrolment (cohort marker)",
+     "mean": 0.022271,
+     "sd": 0.007067
+    },
+    {
+     "variable": "unemployment",
+     "label": "Unemployment rate at enrolment (cohort marker)",
+     "mean": 0.019259,
+     "sd": 0.008905
+    },
+    {
+     "variable": "scholarship",
+     "label": "Scholarship",
+     "mean": 0.018638,
+     "sd": 0.005851
+    },
+    {
+     "variable": "inflation",
+     "label": "Inflation rate at enrolment (cohort marker)",
+     "mean": 0.012127,
+     "sd": 0.005485
+    },
+    {
+     "variable": "debtor",
+     "label": "Debtor status",
+     "mean": 0.01147,
+     "sd": 0.003561
+    },
+    {
+     "variable": "previous_qualification",
+     "label": "Previous qualification",
+     "mean": 0.01104,
+     "sd": 0.004325
+    },
+    {
+     "variable": "gender",
+     "label": "Gender",
+     "mean": 0.008795,
+     "sd": 0.005162
+    },
+    {
+     "variable": "app_order",
+     "label": "Application order",
+     "mean": 0.00826,
+     "sd": 0.006401
+    },
+    {
+     "variable": "application_mode",
+     "label": "Application route",
+     "mean": 0.007784,
+     "sd": 0.005931
+    },
+    {
+     "variable": "attendance",
+     "label": "Attendance",
+     "mean": 0.005624,
+     "sd": 0.004118
+    },
+    {
+     "variable": "international",
+     "label": "Nationality",
+     "mean": 0.002527,
+     "sd": 0.001076
+    },
+    {
+     "variable": "marital",
+     "label": "Marital status",
+     "mean": 0.001635,
+     "sd": 0.004765
+    },
+    {
+     "variable": "displaced",
+     "label": "Displaced",
+     "mean": 0.001218,
+     "sd": 0.005688
+    },
+    {
+     "variable": "special_needs",
+     "label": "Educational special needs",
+     "mean": 0.000147,
+     "sd": 0.000688
+    },
+    {
+     "variable": "age_band",
+     "label": "Age at enrolment",
+     "mean": -0.000358,
+     "sd": 0.006668
+    }
+   ]
+  },
+  {
+   "target": "multiclass",
+   "feature_set": "after_s1",
+   "model": "hgb",
+   "leaks": true,
+   "baseline_score": 0.681094,
+   "features": [
+    {
+     "variable": "s1_approved",
+     "label": "First-semester units approved",
+     "mean": 0.13174,
+     "sd": 0.014059
+    },
+    {
+     "variable": "tuition",
+     "label": "Tuition fees",
+     "mean": 0.057413,
+     "sd": 0.008083
+    },
+    {
+     "variable": "course",
+     "label": "Course",
+     "mean": 0.050335,
+     "sd": 0.004504
+    },
+    {
+     "variable": "approval_band_s1",
+     "label": "First-semester approval rate",
+     "mean": 0.045766,
+     "sd": 0.00748
+    },
+    {
+     "variable": "s1_evaluations",
+     "label": "First-semester evaluations",
+     "mean": 0.042623,
+     "sd": 0.007792
+    },
+    {
+     "variable": "age",
+     "label": "Age at enrolment (years)",
+     "mean": 0.0285,
+     "sd": 0.006826
+    },
+    {
+     "variable": "s1_enrolled",
+     "label": "First-semester units enrolled",
+     "mean": 0.023978,
+     "sd": 0.009437
+    },
+    {
+     "variable": "s1_grade",
+     "label": "First-semester grade",
+     "mean": 0.023134,
+     "sd": 0.007685
+    },
+    {
+     "variable": "gender",
+     "label": "Gender",
+     "mean": 0.02121,
+     "sd": 0.004929
+    },
+    {
+     "variable": "gdp",
+     "label": "GDP at enrolment (cohort marker)",
+     "mean": 0.020926,
+     "sd": 0.005132
+    },
+    {
+     "variable": "unemployment",
+     "label": "Unemployment rate at enrolment (cohort marker)",
+     "mean": 0.015795,
+     "sd": 0.006265
+    },
+    {
+     "variable": "application_mode",
+     "label": "Application route",
+     "mean": 0.015406,
+     "sd": 0.003404
+    },
+    {
+     "variable": "debtor",
+     "label": "Debtor status",
+     "mean": 0.014925,
+     "sd": 0.003531
+    },
+    {
+     "variable": "scholarship",
+     "label": "Scholarship",
+     "mean": 0.013357,
+     "sd": 0.007523
+    },
+    {
+     "variable": "inflation",
+     "label": "Inflation rate at enrolment (cohort marker)",
+     "mean": 0.013245,
+     "sd": 0.004346
+    },
+    {
+     "variable": "app_order",
+     "label": "Application order",
+     "mean": 0.012518,
+     "sd": 0.006289
+    },
+    {
+     "variable": "s1_credited",
+     "label": "First-semester units credited",
+     "mean": 0.011303,
+     "sd": 0.002868
+    },
+    {
+     "variable": "age_band",
+     "label": "Age at enrolment",
+     "mean": 0.009638,
+     "sd": 0.00184
+    },
+    {
+     "variable": "previous_qualification",
+     "label": "Previous qualification",
+     "mean": 0.009574,
+     "sd": 0.006695
+    },
+    {
+     "variable": "displaced",
+     "label": "Displaced",
+     "mean": 0.00762,
+     "sd": 0.003672
+    },
+    {
+     "variable": "s1_without_eval",
+     "label": "First-semester units without evaluation",
+     "mean": 0.006256,
+     "sd": 0.003337
+    },
+    {
+     "variable": "attendance",
+     "label": "Attendance",
+     "mean": 0.001153,
+     "sd": 0.002379
+    },
+    {
+     "variable": "international",
+     "label": "Nationality",
+     "mean": 0.001109,
+     "sd": 0.001832
+    },
+    {
+     "variable": "special_needs",
+     "label": "Educational special needs",
+     "mean": 0.0,
+     "sd": 0.0
+    },
+    {
+     "variable": "marital",
+     "label": "Marital status",
+     "mean": -0.000327,
+     "sd": 0.002799
+    }
+   ]
+  }
+ ]
+}
