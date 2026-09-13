@@ -1,0 +1,70 @@
+# Decisions
+
+One line of why per decision. The mission brief is the approval gate; nothing here
+overrides it. Rulings made during execution are appended at the end.
+
+## Data
+
+| # | Decision | Why |
+|---|----------|-----|
+| D1 | Commit `dataset.csv` (470,858 bytes, 4,424 rows, 35 columns (34 features and the outcome), SHA-256 `ff327a7e...0f4e`) under `data/raw/` with `SOURCE.md`; the Fall 2023 and Spring 2024 course copies are byte-identical. | CC BY 4.0 permits it, and CI reruns the pipeline against the committed file. |
+| D2 | The CSV uses the sequential codes from Table 1 of Realinho et al. (2022, *Data* 7(11):146), not the UCI raw codes. Application mode 1 to 18 and Course 1 to 17 are decoded with that table; the mapping is verified empirically in `docs/DATA_AUDIT.md` (evening courses are attendance 0, "over 23 years old" applicants are all 23 or older, international modes carry the International flag). | A wrong label on a course would be a silent lie on a chart; the audit makes the decoding checkable. |
+| D3 | Application mode is collapsed to six groups for every chart and model: 1st phase general contingent; 2nd or 3rd phase general contingent; over 23 years old; transfer or change of course or institution; holders of a prior higher or technical qualification; other special contingents and ordinances. | Eighteen levels with several under 30 rows would be mostly suppressed cells and unstable coefficients. |
+| D4 | Age band at enrolment: 17 to 19, 20 to 22, 23 to 29, 30 to 39, 40 and over. | Splits the traditional-age entrants from the over-23 route the institution runs, with every band well over 30 rows. |
+| D5 | First-semester approval band: no units enrolled; 0% approved; 1 to 49%; 50 to 99%; 100% (approved over enrolled). | A rate, not a count, because enrolled units differ by course; the none-enrolled band is kept separate because it is its own signal. |
+| D6 | Parents' qualification and occupation (29 to 46 coded levels each) and nationality (21 levels, over 97% Portuguese) are not used in any model or chart; the International flag stands in for nationality. | No verified label mapping for those codes and too many thin levels; leaving them out is stated on the page. |
+| D7 | Marital status is grouped as single; married or in a de facto union; divorced, separated or widowed. Previous qualification is grouped as secondary; higher education; basic or other. | Same thin-level reason; the groups are the ones the institution's routes distinguish. |
+| D8 | The Enrolled outcome is kept as its own class, never merged into Graduate or Dropout. In the binary target it counts as not dropped out, and the page says why that is ambiguous. | Enrolled students had not finished at the normal end of the course; calling them either success or failure would be a guess. |
+
+## Statistics
+
+| # | Decision | Why |
+|---|----------|-----|
+| S1 | Wilson 95% intervals on every share; a cell with n under 30 is suppressed (share, lo and hi null, `suppressed: true`), and a cell with n under 100 is flagged `small_n` and drawn greyed. | The brief requires Wilson and the n = 30 rule; the second flag keeps a 40-row course from plotting as a confident dot. |
+| S2 | Chi-square tests of independence: each categorical predictor against the three-way outcome, with Cramér's V (bias-corrected, Bergsma 2013) as the effect size. Numeric predictors (age at enrolment, first- and second-semester grade): one-way ANOVA and Kruskal-Wallis across the three outcomes, with eta squared (and epsilon squared for the rank test). Holm-adjusted p-values are reported beside raw ones across the whole family of tests. | The course ran the tests without effect sizes or adjustment; with this many predictors on 4,424 rows nearly everything is significant, and the effect size is the finding. |
+| S3 | Semester grade tests exclude rows with no evaluated units (grade recorded as 0), and the exclusion count is emitted. | A zero grade for a student who sat nothing is a missing value, not a mark. |
+| S4 | Predictive split: stratified 80/20 on the three-class outcome with seed 20260912; the same split serves both targets and both feature sets. Model selection by stratified 5-fold CV on the training 80% only; the test 20% is touched once per model. | One split means every metric on the page is comparable; CV on train only keeps the test number honest. |
+| S5 | Feature set "at enrolment": age band (numeric age for the tree models), gender, scholarship holder, tuition fees up to date, debtor, displaced, international, educational special needs, daytime or evening attendance, application mode group, course, marital group, previous qualification group, application order and the three macro indicators (unemployment, inflation, GDP at enrolment). Feature set "after first semester": all of that plus the first-semester unit counts (credited, enrolled, evaluations, approved, without evaluations) and grade, which enter the logistic models as the approval band. Second-semester results are never used. | The second set includes precursors of the outcome itself (a student who passed nothing in semester one is most of the way to dropping out), so the two sets are reported side by side and the second is marked as leaking. |
+| S6 | The logistic models (binary Logit and three-class MNLogit, statsmodels) use only the categorical variables with pinned references: age 17 to 19, female, no scholarship, fees up to date, not a debtor, not displaced, not international, no special needs, 1st phase general contingent, Nursing (the largest course), single, secondary qualification, and approval band 100%; attendance is left out of the logistic models because it is exactly determined by course (the two evening courses). The tree models (HistGradientBoosting and RandomForest, scikit-learn) use the same variables plus the numeric columns above. | statsmodels defaults to alphabetical references, which flips odds ratios; the numerics are dropped from the logistic so the browser estimator can hold every unnamed field at a stated reference level. |
+| S7 | Hyperparameter grid, chosen by CV macro F1: HistGradientBoosting over learning rate {0.05, 0.1} and max iterations {100, 200} with max depth 4; RandomForest with 300 trees over max depth {None, 8} and min samples per leaf {1, 5}. Majority baseline predicts the training majority class. | A small grid, stated in full, beats an unstated tuning loop. |
+| S8 | Test metrics: accuracy, balanced accuracy, macro F1, ROC AUC (one-vs-rest macro for three classes), PR AUC (average precision; macro for three classes), each with a 95% percentile bootstrap interval from 1,000 resamples of the test rows, seed 20260912. Calibration curves with 10 quantile bins for the binary models. Permutation importance on the test set, 10 repeats, scored by ROC AUC (binary) and macro F1 (three-class), grouped by original variable. | The brief names the metrics; bootstrap intervals make 85% a range rather than a claim. |
+| S9 | The best model for the fairness slice is the binary model with the highest CV macro F1 on each feature set; false negative and false positive rates per group at the 0.5 threshold with Wilson intervals, suppressed under 30 rows in the denominator. The page says a gap here is a property of this model on this data, not a finding about students. | Choosing by CV, not by test, keeps the selection out of the reported number; the sentence is required by the brief. |
+| S10 | Model fitting runs single-threaded (`OMP_NUM_THREADS=1`, `n_jobs=1`) and every random component is seeded, so the committed JSON reproduces on CI. The staleness check compares committed and fresh JSON with a numeric tolerance of 1e-6 for descriptive and test files and 5e-3 for model files, exact otherwise. | Cross-platform BLAS noise can move a tree split by one row; a tolerance catches real staleness without a flaky build. |
+| S11 | The estimator interval is the delta-method interval on the logit: the pipeline emits the enrolment binary Logit's coefficient covariance matrix; the browser computes the linear predictor, its standard error, and transforms logit plus or minus 1.96 se. | The brief asks for a probability with an interval; this is the interval the model actually supports. |
+
+## Site and design
+
+| # | Decision | Why |
+|---|----------|-----|
+| W1 | Identity per `docs/DESIGN.md`: tile-grid hero, cool plaster and deep navy surfaces, Literata for prose and Bricolage Grotesque for display and UI, a sticky left rail with the outcome strip on wide screens. | Distinct from CardioLens and Broadsheet; the tile is the subject's own motif. |
+| W2 | Outcome colours from the dataviz reference palette, slots fixed: Graduate blue, Dropout orange, Enrolled aqua; validated all-pairs on both surfaces; light-mode orange and aqua get direct labels and every figure has a table. | The validator passed with a contrast warning that the relief rule answers. |
+| W3 | Plotly build `plotly.js-cartesian-dist-min`, one import site, lazy chunks per chart; the tile grid and the outcome strip are hand-built SVG. | Same trade-off as CardioLens; the tiles are simpler as SVG than as a Plotly trace. |
+| W4 | Vite `base` `/dropout-lens/`; every fetch goes through `import.meta.env.BASE_URL`; `.nojekyll` in `public/`. | Leading-slash fetches 404 on Pages. |
+| W5 | No numeral describing the data is hand-typed in `index.html` or a chart title: `<span data-stat="key|fmt">` filled from `claims.json`, and title templates filled from each figure's JSON. | The honesty thesis fails the moment a typed number drifts. |
+| W6 | Every figure that uses the after-first-semester set carries the `leaks` class (left rule in the accent colour) and the word in its context line. | The reader must never mistake the leaking number for the honest one. |
+| W7 | The estimator's eight inputs: age band, gender, scholarship holder, displaced, application mode group, course, previous qualification group, marital group. Held at reference and stated: fees up to date, not a debtor, not international, no special needs (attendance is implied by the course). Copy: "an association in one Portuguese institution's 2008 to 2019 records, not a prediction about a person and not a decision tool". The words "risk score" never appear. | Brief. |
+| W8 | Estimator parity: the pipeline writes 100 random profiles with the expected probability and interval to `estimator_parity.json`; vitest evaluates the browser function on each and requires agreement to 1e-6. | The brief requires it, and it is the only test that binds the TypeScript to the Python. |
+| W9 | Controls are native `<select>` and `<button>` groups; no URL state; no cross-filtering. | Keyboard access for free; each chart is one claim. |
+| W10 | Every figure: `role="img"` with the claim as its accessible name, a details table of the same rows, a note; a failed fetch replaces one figure with a retry, never the story. | Plotly SVG is opaque to screen readers. |
+
+## Process
+
+| # | Decision | Why |
+|---|----------|-----|
+| P1 | `uv` with a lockfile; CI `uv sync --frozen`; `python -m pipeline` is the only entry point. | Reproducibility. |
+| P2 | Fresh implementer subagent per task, no per-task code reviews (brief), parallel implementers on disjoint files, tests only where a wrong number would go unnoticed, one QA pass on the live URL at the end. | Brief. |
+| P3 | Every commit authored as `sahajm99 <64627746+sahajm99@users.noreply.github.com>` via repo-local config, no trailers. | Brief. |
+| P4 | The notebook is skipped. | Optional in the brief and not worth fifteen minutes against the rest. |
+| P5 | Portfolio: the `student-retention-predictor` entry is edited in place and committed alone, working changes copied aside and restored. | Brief. |
+
+## Rulings during execution
+
+(appended as they are made)
+
+| # | Ruling | Why | Cost if wrong |
+|---|--------|-----|---------------|
+| R1 | This copy of the dataset has 34 features (35 columns with the outcome), not the 36 the brief and the UCI page describe: the two admission-grade columns of the UCI release are absent from the Zenodo copy the courses used. Every count on the page and in the README is the measured one. | The brief itself asks for measured numbers over claimed ones. | A reader comparing with UCI sees a different column count; the SOURCE note explains it. |
+| R2 | Tuition fees up to date and debtor status stay in the "at enrolment" feature set, as the brief lists them, but they are not among the estimator's eight inputs (held at fees up to date and not a debtor, stated) and the limits section says both flags are administrative states recorded during the course that typically flip when a student stops attending. | The audit found fees-not-up-to-date rows drop out at 87%; asking a reader for that flag would make the panel a tautology, while removing it from the feature set would contradict the brief. | The "at enrolment" metrics are more flattering than a true at-admission model; the page says so. |
+| R3 | Attendance (daytime or evening) is excluded from the logistic models because it is exactly a function of course (courses 3 and 17 are the evening variants); it stays in the descriptive section, the tests and the tree models. | A perfectly collinear pair makes the logit singular. | None: the course terms carry the evening effect, labelled "(evening)". |
+| R4 | The logistic models are fitted on the 80% training split only, and the same fit supplies the odds ratios, the test metrics and the browser estimator. | One set of coefficients means the forest, the metrics table and the panel can never disagree. | Odds-ratio intervals are a little wider than a full-sample fit would give. |
+| R5 | Application order and the three macro indicators are numeric features for the tree models only; nationality, parents' qualification and occupation are unused (D6); the macro triple identifies the intake cohort and the page says a model can learn cohort effects from it. | Audit sections 5.6 and 5.9. | A tree model's importance for "GDP" is really "cohort"; the label on the chart says so. |
