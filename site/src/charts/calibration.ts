@@ -144,18 +144,20 @@ export async function render(container: HTMLElement): Promise<void> {
       ...base,
       showlegend: true,
       legend: horizontalLegend(),
-      margin: { ...base.margin, t: 30 },
+      margin: { ...base.margin, t: 30, l: 72, b: 64 },
       hovermode: "closest",
       xaxis: {
         ...base.xaxis,
         range: [0, 1],
         tickformat: ".0%",
+        automargin: true,
         title: { text: "Mean predicted probability of dropout", standoff: 8 },
       },
       yaxis: {
         ...base.yaxis,
         range: [0, 1],
         tickformat: ".0%",
+        automargin: true,
         title: { text: "Observed share who dropped out", standoff: 8 },
       },
     };
