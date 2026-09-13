@@ -1,0 +1,437 @@
+/* From 960px, two columns: a sticky rail and the story. Below, one column
+   with the rail as a top bar. Prose at 66ch, figures up to 860px, everything
+   left aligned. */
+
+.rail {
+  font-family: var(--font-ui);
+}
+
+.site-name {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.site-name a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.section-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.section-nav a {
+  display: block;
+  color: var(--ink-2);
+  font-size: 0.9375rem;
+  line-height: 1.35;
+  text-decoration: none;
+}
+
+.section-nav a:hover {
+  color: var(--ink);
+}
+
+.section-nav a[aria-current="true"] {
+  color: var(--ink);
+}
+
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--grid);
+  border-radius: var(--radius);
+  color: var(--ink-2);
+  cursor: pointer;
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  line-height: 1;
+  padding: var(--space-2) var(--space-3);
+  transition: border-color 120ms ease, color 120ms ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--ink-3);
+  color: var(--ink);
+}
+
+/* The button's face is driven by aria-pressed alone: the inline head script
+   and the theme module both set it from the resolved theme, so the label a
+   sighted reader sees and the one a screen reader hears cannot disagree. */
+.theme-toggle .toggle-dark {
+  display: none;
+}
+
+.theme-toggle[aria-pressed="true"] .toggle-dark {
+  display: inline;
+}
+
+.theme-toggle[aria-pressed="true"] .toggle-light {
+  display: none;
+}
+
+/* The outcome strip: the tiles' three-way split, always in view. hero.ts
+   fills it with a stacked bar whose segments grow by count, and a key. */
+.outcome-strip {
+  display: flex;
+  gap: var(--space-3);
+  align-items: stretch;
+}
+
+.strip-bar {
+  display: flex;
+  flex-direction: column;
+  width: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--surface-2);
+}
+
+.strip-seg {
+  display: block;
+  flex: 0 0 auto;
+}
+
+.strip-key {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 0.8125rem;
+  color: var(--ink-2);
+}
+
+.key-swatch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  margin-right: var(--space-2);
+  vertical-align: -1px;
+}
+
+@media (min-width: 960px) {
+  html {
+    scroll-padding-top: var(--space-5);
+  }
+
+  body {
+    display: grid;
+    grid-template-columns: var(--rail-width) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .rail {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    padding: var(--space-5) var(--space-4);
+    border-right: 1px solid var(--grid);
+  }
+
+  .section-nav {
+    flex: 1 1 auto;
+  }
+
+  .section-nav li + li {
+    margin-top: var(--space-2);
+  }
+
+  /* The current section carries a rule in the accent colour; every link
+     reserves the space, so nothing shifts as the highlight moves. */
+  .section-nav a {
+    border-left: 2px solid transparent;
+    padding-left: calc(var(--space-3) - 2px);
+    margin-left: calc(-1 * var(--space-3));
+  }
+
+  .section-nav a[aria-current="true"] {
+    border-left-color: var(--accent);
+  }
+
+  .strip-bar {
+    height: 132px;
+  }
+
+  .theme-toggle {
+    align-self: flex-start;
+    margin-top: auto;
+  }
+
+  main {
+    grid-column: 2;
+    padding: 0 var(--space-6) var(--space-7);
+  }
+
+  .page-footer {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 959.98px) {
+  .rail {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--surface);
+    border-bottom: 1px solid var(--grid);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "name toggle"
+      "nav nav"
+      "strip strip";
+    column-gap: var(--space-4);
+    align-items: center;
+    padding: var(--space-3) var(--space-4) 0;
+  }
+
+  .site-name {
+    grid-area: name;
+  }
+
+  .theme-toggle {
+    grid-area: toggle;
+  }
+
+  .section-nav {
+    grid-area: nav;
+    margin: var(--space-2) calc(-1 * var(--space-4)) 0;
+  }
+
+  .section-nav ul {
+    display: flex;
+    gap: var(--space-4);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    padding: 0 var(--space-4) var(--space-3);
+  }
+
+  .section-nav ul::-webkit-scrollbar {
+    display: none;
+  }
+
+  .section-nav a {
+    white-space: nowrap;
+  }
+
+  .section-nav a[aria-current="true"] {
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 5px;
+  }
+
+  /* The strip is the bar's bottom edge: a thin horizontal band, no key. */
+  .outcome-strip {
+    grid-area: strip;
+    display: block;
+    margin: 0 calc(-1 * var(--space-4));
+  }
+
+  .strip-bar {
+    flex-direction: row;
+    width: 100%;
+    height: 4px;
+    border-radius: 0;
+  }
+
+  .strip-key {
+    display: none;
+  }
+
+  main {
+    padding: 0 var(--space-4) var(--space-6);
+  }
+}
+
+section {
+  padding-block: var(--space-7) 0;
+}
+
+section:first-of-type {
+  padding-top: var(--space-6);
+}
+
+section > p,
+section > h1,
+section > h2,
+section > ul,
+section > ol,
+.prose {
+  max-width: var(--prose-width);
+}
+
+/* The hero headline: the one sentence with a number in it, set in the
+   display face at width 87, tight leading. */
+.hero-headline {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-stretch: 87%;
+  font-size: clamp(1.9rem, 4.2vw, 2.9rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  max-width: 22ch;
+  margin: var(--space-5) 0;
+}
+
+.hero-headline .stat {
+  font-variant-numeric: tabular-nums;
+}
+
+/* The tile grid: the one loud element. */
+.tiles {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 0 var(--space-6);
+}
+
+.tile-grid {
+  aspect-ratio: 1;
+  width: 100%;
+}
+
+.tile-grid-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* One page-load moment: the tiles fill in outcome by outcome. Under reduced
+   motion base.css cancels every transition and hero.ts never sets the
+   pending state, so the grid simply appears. */
+.tile-grid-svg rect {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    opacity 280ms ease-out,
+    transform 280ms ease-out;
+  transition-delay: var(--d, 0ms);
+}
+
+.tile-grid-svg.is-pending rect {
+  opacity: 0;
+  transform: scale(0.4);
+}
+
+.tiles-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  list-style: none;
+  margin: var(--space-3) 0 0;
+  padding: 0;
+  font-family: var(--font-ui);
+  font-size: 0.9375rem;
+  color: var(--ink-2);
+}
+
+.tiles-key li {
+  display: inline-flex;
+  align-items: center;
+}
+
+.tiles .fig-table {
+  margin-top: var(--space-3);
+}
+
+/* The limits are a list on purpose: each one is a separate thing to know. */
+.limits {
+  padding-left: var(--space-4);
+}
+
+.limits li {
+  margin-bottom: var(--space-4);
+}
+
+.limits strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.page-footer {
+  border-top: 1px solid var(--grid);
+  margin-top: var(--space-7);
+  padding: var(--space-5) var(--space-4);
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  color: var(--ink-3);
+}
+
+@media (min-width: 960px) {
+  .page-footer {
+    padding-inline: var(--space-6);
+  }
+}
+
+.page-footer p {
+  max-width: var(--prose-width);
+}
+
+.page-footer a {
+  color: var(--ink-2);
+}
+
+/* The one page-level failure notice: claims.json did not load, so the numbers
+   in the prose are placeholders. It borrows the figure error's dress. */
+.page-notice {
+  margin: var(--space-5) 0 0;
+  max-width: var(--prose-width);
+}
+
+.noscript {
+  border-left: 2px solid var(--ink-3);
+  padding-left: var(--space-4);
+  margin: var(--space-5) 0;
+  max-width: var(--prose-width);
+  font-family: var(--font-ui);
+  font-size: 0.9375rem;
+}
+
+@media print {
+  /* Three scopes, because a dark-preferring machine with scripts off never
+     gets a data-theme attribute and would otherwise print the dark palette. */
+  :root,
+  :root[data-theme="dark"],
+  :root:not([data-theme="light"]) {
+    --surface: #ffffff;
+    --surface-2: #e6eaf0;
+    --ink: #0f1a2b;
+    --ink-2: #45506a;
+    --ink-3: #7c869b;
+    --grid: #d5dbe5;
+    --accent: #1d4ea3;
+    --series-1: #2a78d6;
+    --series-2: #eb6834;
+    --series-3: #1baf7a;
+    color-scheme: light;
+  }
+
+  body {
+    display: block;
+  }
+
+  .rail,
+  .skip-link {
+    display: none !important;
+  }
+
+  .figure {
+    break-inside: avoid;
+  }
+
+  .fig-table {
+    display: block;
+  }
+}

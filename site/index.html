@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dropout Lens: who leaves one Portuguese polytechnic, and what predicts it</title>
+    <meta
+      name="description"
+      content="A live analysis of one Portuguese polytechnic's enrolment records: who dropped out, what differed at enrolment, what the tests say with effect sizes rather than stars, and what a model can and cannot predict."
+    />
+    <meta name="color-scheme" content="light dark" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f1a2b'/%3E%3Cg%3E%3Crect x='5' y='5' width='6' height='6' rx='1.5' fill='%23eb6834'/%3E%3Crect x='13' y='5' width='6' height='6' rx='1.5' fill='%23eb6834'/%3E%3Crect x='21' y='5' width='6' height='6' rx='1.5' fill='%23eb6834'/%3E%3Crect x='5' y='13' width='6' height='6' rx='1.5' fill='%231baf7a'/%3E%3Crect x='13' y='13' width='6' height='6' rx='1.5' fill='%231baf7a'/%3E%3Crect x='21' y='13' width='6' height='6' rx='1.5' fill='%232a78d6'/%3E%3Crect x='5' y='21' width='6' height='6' rx='1.5' fill='%232a78d6'/%3E%3Crect x='13' y='21' width='6' height='6' rx='1.5' fill='%232a78d6'/%3E%3Crect x='21' y='21' width='6' height='6' rx='1.5' fill='%232a78d6'/%3E%3C/g%3E%3C/svg%3E"
+    />
+    <script>
+      // Paint the chosen theme before first paint, so there is no flash, and
+      // put the toggle in the state that matches it, so its label is never a
+      // lie about what the button will do.
+      (function () {
+        function prefersDark() {
+          try {
+            return window.matchMedia("(prefers-color-scheme: dark)").matches;
+          } catch (e) {
+            return false;
+          }
+        }
+        var t;
+        try {
+          t = localStorage.getItem("dropout-lens-theme");
+        } catch (e) {
+          /* private mode: fall back to the media query */
+        }
+        if (t !== "light" && t !== "dark") t = prefersDark() ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", t);
+        document.addEventListener("DOMContentLoaded", function () {
+          var btn = document.getElementById("theme-toggle");
+          if (!btn) return;
+          btn.setAttribute("aria-pressed", String(t === "dark"));
+          btn.setAttribute(
+            "aria-label",
+            t === "dark"
+              ? "Dark theme, switch to light"
+              : "Light theme, switch to dark",
+          );
+        });
+      })();
+    </script>
+    <script type="module" src="/src/main.ts"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#who">Skip to the story</a>
+
+    <aside class="rail">
+      <p class="site-name"><a href="#who">Dropout Lens</a></p>
+      <nav class="section-nav" aria-label="Sections">
+        <ul>
+          <li><a href="#who">Who is in the data?</a></li>
+          <li><a href="#enrolment">What differs at enrolment?</a></li>
+          <li><a href="#tests">What do the tests say?</a></li>
+          <li><a href="#predict">What can a model predict?</a></li>
+          <li><a href="#drivers">What drives the model?</a></li>
+          <li><a href="#unequal">Where is it unequal?</a></li>
+          <li><a href="#estimator">Put a profile through the model</a></li>
+          <li><a href="#limits">What this cannot tell you</a></li>
+        </ul>
+      </nav>
+      <div id="outcome-strip" class="outcome-strip"></div>
+      <button
+        id="theme-toggle"
+        class="theme-toggle"
+        type="button"
+        aria-pressed="false"
+        aria-label="Light theme, switch to dark"
+      >
+        <span class="toggle-light">Dark</span>
+        <span class="toggle-dark">Light</span>
+      </button>
+    </aside>
+
+    <main>
+      <noscript>
+        <div class="noscript">
+          <p>
+            The written argument below reads without JavaScript. The numbers
+            quoted inside it do not: they are filled in from the same JSON
+            files the charts use, so with scripts off you will see a
+            placeholder where each number belongs, and no tiles, charts or
+            tables at all.
+          </p>
+        </div>
+      </noscript>
+
+      <section id="who">
+        <h1>Who is in the data, and how does it end?</h1>
+        <p class="hero-headline">
+          Of every 100 students who enrolled, <span class="stat" data-stat="tiles_dropout">&hellip;</span> had left by the end of their course.
+        </p>
+
+        <div id="tiles" class="tiles">
+          <div class="tile-grid"></div>
+        </div>
+
+        <p>
+          Each tile is one student in every hundred of the
+          <span data-stat="n_rows|int">&hellip;</span> who enrolled at a
+          Portuguese polytechnic between
+          <span data-stat="year_from">2008</span> and
+          <span data-stat="year_to">2019</span>, in the dataset Realinho,
+          Machado, Baptista and Martins published as
+          <cite>Predicting Student Dropout and Academic Success</cite>
+          (<a href="https://doi.org/10.3390/data7110146">in <cite>Data</cite></a>)
+          and on the
+          <a href="https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success"
+            >UCI Machine Learning Repository</a
+          >
+          under a Creative Commons Attribution licence. This copy carries
+          <span data-stat="n_features|int">&hellip;</span> features per
+          student, recorded at admission and through the first year, and one
+          outcome taken at the normal end of the course:
+          <span data-stat="n_dropout|int">&hellip;</span> dropped out,
+          <span data-stat="n_enrolled|int">&hellip;</span> were still enrolled
+          and <span data-stat="n_graduate|int">&hellip;</span> graduated. Every
+          number on this page is read from a file a pipeline wrote from that
+          dataset; none is typed in.
+        </p>
+        <p>
+          The same file sat under two of my graduate course projects at the
+          University of North Texas: a Fundamentals of AI project that plotted
+          it and trained six classifiers, and an Empirical Analysis project a
+          semester later that ran chi-square tests, t-tests and ANOVA over it.
+          The first dropped every Enrolled student, used both semesters'
+          results as features and reported a random forest's accuracy on a
+          random split; the second coded Enrolled together with Graduate, and
+          its written conclusions were template text that did not follow from
+          its own p-values. Neither figure is comparable with anything below.
+          This page asks their questions again and measures every answer under
+          one fixed split, with intervals, effect sizes and the limits stated.
+        </p>
+        <p>
+          Enrolled is the outcome to read carefully. It does not mean the
+          student stayed; it means that at the normal end of the course they
+          had neither graduated nor left, so the course was still in progress.
+          It is kept as its own class throughout, because calling it a success
+          or a failure would be a guess, and when a question is simply dropout
+          or not, an enrolled student counts as not having dropped out. Later
+          intake years carry more of it, since their students had less time to
+          finish.
+        </p>
+      </section>
+
+      <section id="enrolment">
+        <h2>What differs at enrolment?</h2>
+        <p>
+          Everything in this section is a fact the institution knew on the day
+          a student enrolled, or an administrative flag it recorded along the
+          way. The first chart splits the three outcomes by one characteristic
+          at a time; pick the characteristic. Women dropped out at
+          <span data-stat="p_dropout_female|pct">&hellip;</span> against
+          <span data-stat="p_dropout_male|pct">&hellip;</span> of men;
+          scholarship holders at
+          <span data-stat="p_dropout_scholarship|pct">&hellip;</span> against
+          <span data-stat="p_dropout_no_scholarship|pct">&hellip;</span> of
+          students without one; debtors at
+          <span data-stat="p_dropout_debtor|pct">&hellip;</span> against
+          <span data-stat="p_dropout_not_debtor|pct">&hellip;</span>. Students
+          whose fees were not up to date dropped out at
+          <span data-stat="p_dropout_fees_late|pct">&hellip;</span> against
+          <span data-stat="p_dropout_fees_ok|pct">&hellip;</span>, the widest
+          gap in the file and the one to be most careful with, for a reason
+          the limits give.
+        </p>
+        <figure
+          class="figure"
+          data-chart="outcome-by-group"
+          style="--fig-h: 520px"
+        >
+          <div class="fig-skeleton"></div>
+        </figure>
+
+        <p>
+          The second chart draws the dropout share alone, with its Wilson
+          interval, so the gaps can be compared for width as well as size. Age
+          is a step rather than a slope:
+          <span data-stat="p_dropout_age_youngest|pct">&hellip;</span> of the
+          students who enrolled aged seventeen to nineteen dropped out, against
+          <span data-stat="p_dropout_age_oldest|pct">&hellip;</span> of those
+          aged forty and over. Evening students dropped out at
+          <span data-stat="p_dropout_evening|pct">&hellip;</span> against
+          <span data-stat="p_dropout_daytime|pct">&hellip;</span> in the
+          daytime, and the courses run from
+          <span data-stat="course_min_label">&hellip;</span> at
+          <span data-stat="p_dropout_course_min|pct">&hellip;</span> to
+          <span data-stat="course_max_label">&hellip;</span> at
+          <span data-stat="p_dropout_course_max|pct">&hellip;</span>. A cell
+          with fewer than thirty students is not drawn at all; one under a
+          hundred is drawn greyed.
+        </p>
+        <figure
+          class="figure"
+          data-chart="dropout-by-group"
+          style="--fig-h: 560px"
+        >
+          <div class="fig-skeleton"></div>
+        </figure>
+
+        <p>
+          The next chart is the first thing on this page that is not an
+          enrolment fact. The share of first-semester units a student passed is
+          known only once the first semester is over, by which time much of the
+          outcome has already happened:
+          <span data-stat="p_dropout_approval_0|pct">&hellip;</span> of the
+          students who passed nothing in the first semester dropped out, against
+          <span data-stat="p_dropout_approval_100|pct">&hellip;</span> of those
+          who passed everything. It is the strongest signal in the file, and it
+          carries the accent rule that marks every later figure built on it,
+          because a model that uses it is not predicting from enrolment; it is
+          reading the first semester. One band is not a performance level at
+          all: no units enrolled is a course whose first-year records were
+          never exported, kept as its own level rather than counted as zero.
+        </p>
+        <figure
+          class="figure leaks"
+          data-chart="approval-band"
+          style="--fig-h: 400px"
+        >
+          <div class="fig-skeleton"></div>
+        </figure>
+      </section>
+
+      <section id="tests">
+        <h2>What do the tests say?</h2>
+        <p>
+          The course project ran a chi-square test per variable and read off
+          the p-values. With <span data-stat="n_rows|int">&hellip;</span> rows
+          nearly everything clears the conventional line: of the
+          <span data-stat="n_tests|int">&hellip;</span> tests here,
+          <span data-stat="n_tests_holm_sig|int">&hellip;</span> stay under it
+          after the Holm adjustment, which holds the chance of a single false
+          positive across the whole family rather than test by test.
+          Significance therefore says almost nothing about which variables
+          matter. Effect size does. Each categorical variable is tested against
+          the three-way outcome and reported with bias-corrected Cramér's V;
+          age and the semester grades are tested with ANOVA and Kruskal-Wallis
+          and reported with eta squared. Raw and adjusted p-values sit side by
+          side in every table.
+        </p>
+        <p>
+          The largest effects belong to
+          <span data-stat="top_v_label|lower">&hellip;</span> (V =
+          <span data-stat="top_v|num2">&hellip;</span>),
+          <span data-stat="second_v_label|lower">&hellip;</span> (V =
+          <span data-stat="second_v|num2">&hellip;</span>) and
+          <span data-stat="third_v_label|lower">&hellip;</span> (V =
+          <span data-stat="third_v|num2">&hellip;</span>); gender sits at
+          <span data-stat="v_gender|num2">&hellip;</span> and age band at
+          <span data-stat="v_age_band|num2">&hellip;</span>. The first-semester
+          approval rate, at
+          <span data-stat="v_approval_band_s1|num2">&hellip;</span>, leaks for
+          the reason given above and is drawn apart from the rest.
+        </p>
+        <figure
+          class="figure"
+          data-chart="effect-sizes"
+          style="--fig-h: 560px"
+        >
+          <div class="fig-skeleton"></div>
+        </figure>
+
+        <p>
+          A p-value answers whether a difference this large would be surprising
+          if there were none; with thousands of rows a trivial difference is
+          surprising. Cramér's V and eta squared answer how large the
+          association is on a fixed scale, and that is the number to compare
+          across variables. For age as a number, eta squared is
+          <span data-stat="eta_age|num2">&hellip;</span>: the three outcome
+          groups differ in age at enrolment, and age accounts for that share of
+          its variance. The first-semester grade's
+          <span data-stat="eta_grade_s1|num2">&hellip;</span> is larger and
+          leaks, like the approval band it summarises.
+        </p>
+        <figure
+          class="figure"
+          data-chart="distributions"
+          style="--fig-h: 460px"
+        >
+          <div class="fig-skeleton"></div>
+        </figure>
+      </section>
+
+      <section id="predict">
+        <h2>What can a model predict, and when?</h2>
+        <p>
+          One row in five is held out, stratified on the three-way outcome, and
+          never touched until the end:
+          <span data-stat="n_train|int">&hellip;</span> rows to fit and choose
+          on, <span data-stat="n_test|int">&hellip;</span> to report on. Four
+          models are fitted for each of two targets, dropout or not and the
+          three-way outcome, and the choice between settings is made by
+          five-fold cross-validation on the training rows alone, so the test
+          rows are seen once per model. Every test metric carries a bootstrap
+          interval from a thousand resamples of the test rows.
+        </p>
+        <p>
+          Each model is fitted twice. The at-enrolment set uses what was known
+          on enrolment day plus the two administrative flags. The
+          after-first-semester set adds the first-semester unit counts and
+          grade, and it leaks: those columns are recorded at the end of the
+          first semester and are partly the outcome itself, since a student who
+          passed nothing is most of the way out of the door. The two are drawn
+          side by side because the gap between them is the finding.
+        </p>
+        <p>
+          Predicting the majority class gets
+          <span data-stat="acc_majority_binary|pct">&hellip;</span> on the
+          dropout target, since
+          <span data-stat="test_positive_share|pct">&hellip;</span> of the test
+          rows are dropouts. At enrolment,
+          <span data-stat="best_enrolment_label|lower">&hellip;</span> reaches
+          <span data-stat="acc_best_enrolment|pct">&hellip;</span> accuracy
+          (<span data-stat="acc_best_enrolment_lo|pct">&hellip;</span> to
+          <span data-stat="acc_best_enrolment_hi|pct">&hellip;</span>) and an
+          area under the ROC curve of
+          <span data-stat="auc_best_enrolment|num2">&hellip;</span>; logistic
+          regression is close behind at
+          <span data-stat="acc_logistic_enrolment|pct">&hellip;</span>. After
+          the first semester,
+          <span data-stat="best_after_s1_label|lower">&hellip;</span> reaches
+          <span data-stat="acc_best_after_s1|pct">&hellip;</span> with an area
+          under the curve of
+          <span data-stat="auc_best_after_s1|num2">&hellip;</span>. The second
+          number is the kind the course project's random forest reported, and
+          it is not a prediction from enrolment.
+        </p>
+        <figure
+          class="figure"
+          data-chart="metrics-binary"
+          style="--fig-h: 520px"
+        >
+          <div class="fig-skeleton"></div>
+        </figure>
+
+        <p>
+          The three-way outcome is harder, because Enrolled is not separable
+          from the other two on anything known at enrolment. The majority
+          baseline is
+          <span data-stat="acc_majority_multiclass|pct">&hellip;</span>;
+          <span data-stat="best_multiclass_enrolment_label|lower">&hellip;</span>
+          reaches
+          <span data-stat="acc_best_multiclass_enrolment|pct">&hellip;</span>
+          at enrolment and
+          <span data-stat="best_multiclass_after_s1_label|lower">&hellip;</span>
+          <span data-stat="acc_best_multiclass_after_s1|pct">&hellip;</span>
+          after the first semester.
+        </p>
+        <figure
+          class="figure"
+          data-chart="metrics-multiclass"
+          style="--fig-h: 520px"
+        >
+          <div class="fig-skeleton"></div>
+        </figure>
+
+        <p>
+          A probability is only useful if it is honest. The calibration chart
+          bins the test rows by their predicted probability of dropping out
+          and draws the share that actually did; a curve on the diagonal is a
+          model whose probabilities mean what they say.
+        </p>
+        <figure
+          class="figure"
+          data-chart="calibration"
+          style="--fig-h: 460px"
+        >
+          <div class="fig-skeleton"></div>
+        </figure>
+      </section>
+
+      <section id="drivers">
+        <h2>What drives the model?</h2>
+        <p>
+          Two views. The forest plot reads the logistic models, which hold
+          every other variable fixed and report each level's odds ratio against
+          a stated reference: a single woman aged seventeen to nineteen, no
+          scholarship, fees up to date, not a debtor, not displaced,
+          Portuguese, no special needs, admitted in the first general phase to
+          Nursing with a secondary qualification. Fees not up to date carries
+          an odds ratio of <span data-stat="or_fees_late|num2">&hellip;</span>
+          and being a debtor <span data-stat="or_debtor|num2">&hellip;</span>;
+          holding a scholarship
+          <span data-stat="or_scholarship|num2">&hellip;</span>, below one, so
+          fewer dropouts; being male
+          <span data-stat="or_male|num2">&hellip;</span>; being forty or over
+          <span data-stat="or_age_40|num2">&hellip;</span>; and arriving by the
+          over-twenty-three route
+          <span data-stat="or_over23|num2">&hellip;</span>. The two
+          administrative flags dominate, and they are the ones recorded during
+          the course rather than at admission. The toggle switches to the model
+          that also sees the first-semester approval band, which leaks.
+        </p>
+        <figure class="figure" data-chart="forest" style="--fig-h: 900px">
+          <div class="fig-skeleton"></div>
+        </figure>
+
+        <p>
+          Permutation importance asks a different question of the tree models:
+          shuffle one variable in the test rows and see how much the score
+          falls. At enrolment the top variable is
+          <span data-stat="top_importance_label_enrolment|lower">&hellip;</span>;
+          after the first semester it is
+          <span data-stat="top_importance_label_after_s1|lower">&hellip;</span>,
+          and everything known on enrolment day sits far below it. The three
+          macro indicators identify the intake year, so an importance for one
+          of them is a cohort effect, not an economic one.
+        </p>
+        <figure class="figure" data-chart="importance" style="--fig-h: 520px">
+          <div class="fig-skeleton"></div>
+        </figure>
+      </section>
+
+      <section id="unequal">
+        <h2>Where is it unequal?</h2>
+        <p>
+          The best at-enrolment dropout model, at a threshold of one half,
+          misses the students who left at different rates by group: its false
+          negative rate is <span data-stat="fnr_female|pct">&hellip;</span> for
+          women and <span data-stat="fnr_male|pct">&hellip;</span> for men, a
+          gap of <span data-stat="fnr_gap_gender|pts">&hellip;</span>. It
+          flags students who did not leave at
+          <span data-stat="fpr_female|pct">&hellip;</span> and
+          <span data-stat="fpr_male|pct">&hellip;</span>. The same two rates
+          are drawn by scholarship, age band and fee status, each with its
+          Wilson interval, and a level with fewer than thirty students in the
+          denominator is left as a labelled gap.
+        </p>
+        <p>
+          A gap here is a property of this model on this data, not a finding about students.
+          It says where this model, fitted to this file, would fail whom, and
+          nothing about why.
+        </p>
+        <figure class="figure" data-chart="fairness" style="--fig-h: 520px">
+          <div class="fig-skeleton"></div>
+        </figure>
+      </section>
+
+      <section id="estimator">
+        <h2>Put a profile through the enrolment model</h2>
+        <p>
+          Choose eight characteristics and the panel evaluates the at-enrolment
+          logistic model for that profile: a probability of dropping out, with
+          an interval from the coefficient covariance, beside the training base
+          rate of <span data-stat="estimator_base_rate|pct">&hellip;</span>.
+          Fee status, debtor status, nationality and special needs are held at
+          their reference levels, and the panel says so. What comes out is
+          an association in one Portuguese institution's 2008 to 2019 records, not a prediction about a person and not a decision tool.
+        </p>
+        <figure
+          class="figure panel"
+          data-chart="estimator"
+          style="--fig-h: 560px"
+        >
+          <div class="fig-skeleton"></div>
+        </figure>
+      </section>
+
+      <section id="limits">
+        <h2>What this cannot tell you</h2>
+        <p>Each of these applies to every number above it.</p>
+        <ul class="limits">
+          <li>
+            <strong>One institution.</strong> Every number describes one
+            Portuguese polytechnic's records over one span of years. Nothing
+            here transfers to another institution or country without being
+            measured there.
+          </li>
+          <li>
+            <strong>The outcome is measured at the normal course end.</strong>
+            Enrolled means the student had not finished when the record was
+            taken, not that they stayed. It is ambiguous between a slow pass
+            and an eventual exit, and later intake cohorts carry more of it
+            because their students had less time to finish. The file has no
+            year column, so which cohorts are the recent ones cannot be
+            confirmed.
+          </li>
+          <li>
+            <strong>First-semester features leak.</strong> Every figure with
+            the accent rule uses columns recorded at the end of the first
+            semester, which are partly the outcome. The number it produces is a
+            reading of the first semester, not a prediction from enrolment, and
+            it is never the headline.
+          </li>
+          <li>
+            <strong
+              >Tuition and debtor status are administrative states.</strong
+            >
+            Fees up to date and debtor are kept in the at-enrolment set because
+            the dataset lists them there, but both are recorded during the
+            course and typically flip when a student stops attending. The
+            at-enrolment metrics are therefore more flattering than a true
+            at-admission model would be, and the estimator holds both at their
+            reference level rather than asking for them.
+          </li>
+          <li>
+            <strong>One course has no first-year record.</strong> Most of the
+            students in Animation and Multimedia Design have every curricular
+            column at zero, across seven of the ten intake years. That is a gap
+            in the export, not a course in which students enrolled in nothing.
+            Those rows are kept as their own approval band, no zero is imputed,
+            and the after-first-semester models learn the course partly through
+            the missing record.
+          </li>
+          <li>
+            <strong>No causal claims.</strong> Every association here is
+            observational. A scholarship does not cause graduation because
+            scholarship holders graduate more often; the grant is awarded on
+            need and kept on passing, which selects the students who hold it.
+          </li>
+          <li>
+            <strong>Intervals are not significance.</strong> An interval says
+            how precisely a share is estimated from this many rows. Two
+            intervals that overlap do not show there is no difference, and two
+            that do not overlap are not a test; the tests are in their own
+            section, with effect sizes beside them.
+          </li>
+          <li>
+            <strong>Subgroups under thirty are suppressed.</strong> A cell with
+            fewer than thirty students carries no estimate at all, and a cell
+            under a hundred is drawn greyed. Every figure carries its own
+            table, so the count behind each claim is one click away.
+          </li>
+          <li>
+            <strong>Parents' background and nationality are unused.</strong>
+            Parents' qualification and occupation, and nationality beyond the
+            Portuguese-or-international flag, appear in no chart or model:
+            their coded levels have no verified label mapping here, and most
+            are too thin to estimate.
+          </li>
+          <li>
+            <strong>Two admission-grade columns are absent.</strong> This copy
+            carries <span data-stat="n_features|int">&hellip;</span> features;
+            the UCI release lists two more, the previous qualification grade
+            and the admission grade, which are missing from the copy the course
+            projects used. A model with them would likely do better at
+            enrolment than anything here.
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="page-footer">
+      <p>
+        Dropout Lens is written and built by
+        <a href="https://github.com/sahajm99">Sahaj Mekala</a>.
+      </p>
+      <p>
+        Data:
+        <a href="https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success"
+          >Predict Students' Dropout and Academic Success</a
+        >, by Valentim Realinho, Mónica Vieira Martins, Jorge Machado and Luís
+        Baptista, on the UCI Machine Learning Repository under the
+        <a href="https://creativecommons.org/licenses/by/4.0/"
+          >Creative Commons Attribution licence</a
+        >. The aggregates are produced by a Python pipeline in this repository
+        and committed as JSON; the site never reads a raw row.
+      </p>
+      <p>Built with pandas, statsmodels, scikit-learn, Vite and Plotly.</p>
+      <p>
+        <a href="https://github.com/sahajm99/dropout-lens">Source on GitHub</a>.
+        Code under the MIT licence; the data belongs to its authors under the
+        licence above.
+      </p>
+    </footer>
+  </body>
+</html>

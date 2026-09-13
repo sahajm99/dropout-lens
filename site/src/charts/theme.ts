@@ -1,0 +1,203 @@
+import { cssVar } from "../theme.ts";
+import type { Outcome } from "../types.ts";
+
+export { cssVar };
+
+/** The outcome order every file, chart and table uses. */
+export const OUTCOMES: readonly Outcome[] = ["Dropout", "Enrolled", "Graduate"];
+
+/**
+ * Outcome colours, assigned once and never re-ordered: Dropout orange,
+ * Enrolled aqua, Graduate blue. The token, not the hex, so the tiles and the
+ * strip can follow the theme through CSS alone.
+ */
+export const OUTCOME_TOKEN: Record<Outcome, string> = {
+  Dropout: "--series-2",
+  Enrolled: "--series-3",
+  Graduate: "--series-1",
+};
+
+export function outcomeToken(outcome: Outcome): string {
+  const token = OUTCOME_TOKEN[outcome];
+  if (!token) throw new Error(`No colour is assigned to outcome "${outcome}"`);
+  return token;
+}
+
+/** The resolved colour for an outcome, read fresh so a theme change recolours. */
+export function outcomeColor(outcome: Outcome): string {
+  return cssVar(outcomeToken(outcome));
+}
+
+const UI_FONT = '"Bricolage Grotesque Variable", system-ui, sans-serif';
+
+/**
+ * Plotly chrome derived from the CSS tokens, so light and dark never drift
+ * apart: hairline gridlines one step off the surface, no modebar, axis text in
+ * the secondary ink.
+ */
+export function baseLayout(): Partial<Plotly.Layout> {
+  const surface = cssVar("--surface");
+  const grid = cssVar("--grid");
+  const ink = cssVar("--ink");
+  const ink2 = cssVar("--ink-2");
+  const axis = {
+    gridcolor: grid,
+    zerolinecolor: grid,
+    linecolor: grid,
+    tickfont: { color: ink2 },
+  };
+  return {
+    paper_bgcolor: surface,
+    plot_bgcolor: surface,
+    font: { family: UI_FONT, color: ink2, size: 13 },
+    xaxis: { ...axis },
+    yaxis: { ...axis },
+    margin: { l: 8, r: 16, t: 8, b: 40 },
+    hoverlabel: {
+      bgcolor: cssVar("--surface-2"),
+      bordercolor: grid,
+      font: { color: ink, family: UI_FONT, size: 13 },
+    },
+  };
+}
+
+/** The CardioLens name for `baseLayout`, kept for copied chart code. */
+export const layoutTemplate = baseLayout;
+
+/** Series colours, read fresh on every render so the toggle recolours charts. */
+export const series = () => ({
+  s1: cssVar("--series-1"),
+  s2: cssVar("--series-2"),
+  s3: cssVar("--series-3"),
+  s4: cssVar("--series-4"),
+  accent: cssVar("--accent"),
+  muted: cssVar("--ink-3"),
+  grid: cssVar("--grid"),
+});
+
+/**
+ * Plotly stacks the first y category at the bottom, so a list drawn down the
+ * page is reversed before it is handed over: the first item in the file ends
+ * up at the top, in the same order as the sentence above the chart.
+ */
+export function reversed<T>(xs: T[]): T[] {
+  return xs.slice().reverse();
+}
+
+/**
+ * The legend every chart uses: one row above the plot, left aligned with the
+ * claim, in the secondary ink. `y` moves it clear of a taller plot area.
+ */
+export function horizontalLegend(y = 1.04): Partial<Plotly.Legend> {
+  return {
+    orientation: "h",
+    x: 0,
+    y,
+    yanchor: "bottom",
+    font: { color: cssVar("--ink-2") },
+  };
+}
+
+export const CONFIG: Partial<Plotly.Config> = {
+  displayModeBar: false,
+  responsive: true,
+  scrollZoom: false,
+};
+
+/**
+ * A CSS hex colour as `rgba(...)`, for fills that must sit behind a line
+ * without being read as a second series. Falls back to the input if the token
+ * is not a hex, so a theme change can never leave a chart colourless.
+ */
+export function hexToRgba(hex: string, alpha: number): string {
+  const m = /^#?([\da-f]{3}|[\da-f]{6})$/i.exec(hex.trim());
+  if (!m) return hex;
+  const digits = m[1]!;
+  const full =
+    digits.length === 3
+      ? digits
+          .split("")
+          .map((c) => c + c)
+          .join("")
+      : digits;
+  const n = Number.parseInt(full, 16);
+  const r = (n >> 16) & 255;
+  const g = (n >> 8) & 255;
+  const b = n & 255;
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
+/**
+ * The five sequential stops as a Plotly colorscale, low to high. The dark
+ * tokens are the light ones flipped in lightness, so `--seq-5` is always the
+ * end that contrasts most with the page and "more" always reads as "louder".
+ */
+export function seqColorscale(): [number, string][] {
+  return [0, 0.25, 0.5, 0.75, 1].map((pos, i) => [
+    pos,
+    cssVar(`--seq-${i + 1}`),
+  ]);
+}
+
+/** WCAG relative luminance of a hex colour; 0 for anything unparseable. */
+function luminance(hex: string): number {
+  const m = /^#?([\da-f]{3}|[\da-f]{6})$/i.exec(hex.trim());
+  if (!m) return 0;
+  const d = m[1]!;
+  const full =
+    d.length === 3
+      ? d
+          .split("")
+          .map((c) => c + c)
+          .join("")
+      : d;
+  const n = Number.parseInt(full, 16);
+  const channel = (v: number): number => {
+    const s = v / 255;
+    return s <= 0.03928 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4;
+  };
+  return (
+    0.2126 * channel((n >> 16) & 255) +
+    0.7152 * channel((n >> 8) & 255) +
+    0.0722 * channel(n & 255)
+  );
+}
+
+/** The WCAG contrast ratio between two hex colours, 1 (same) to 21 (extreme). */
+export function contrastRatio(a: string, b: string): number {
+  const la = luminance(a);
+  const lb = luminance(b);
+  return (Math.max(la, lb) + 0.05) / (Math.min(la, lb) + 0.05);
+}
+
+/**
+ * `--ink` or `--surface`, whichever reads better on `bg`. Label colours inside
+ * a filled shape are picked this way rather than hard-coded, because the two
+ * themes put the same token at opposite ends of the lightness range.
+ */
+export function inkOn(bg: string): string {
+  const ink = cssVar("--ink");
+  const surface = cssVar("--surface");
+  return contrastRatio(bg, ink) >= contrastRatio(bg, surface) ? ink : surface;
+}
+
+/**
+ * An asymmetric interval as Plotly error bars. Shared by every chart that
+ * draws an interval, so the hairline weight is decided in one place.
+ */
+export function errorBars(
+  mid: number[],
+  lo: number[],
+  hi: number[],
+  color: string,
+): Plotly.ErrorBar {
+  return {
+    type: "data",
+    symmetric: false,
+    array: mid.map((p, i) => (hi[i] ?? p) - p),
+    arrayminus: mid.map((p, i) => p - (lo[i] ?? p)),
+    color,
+    thickness: 1,
+    width: 3,
+  };
+}
